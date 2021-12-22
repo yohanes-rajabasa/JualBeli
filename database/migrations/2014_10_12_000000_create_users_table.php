@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->date('dob')->nullable();
             $table->string('address');
+            $table->string('picture_path')->nullable();
             $table->integer('role_number'); // 1 => customer 2=> seller
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
