@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductDetailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 
@@ -25,3 +26,6 @@ Route::post('register/seller', [RegisterController::class, 'seller']);
 Route::get('/profile', function () {
     return view('profile');
 });
+
+// product detail
+Route::get('product/detail',[ProductDetailController::class,'showProductDetail']);
