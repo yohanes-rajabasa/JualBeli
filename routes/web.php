@@ -25,3 +25,7 @@ Route::post('register/seller', [RegisterController::class, 'seller']);
 Route::get('/profile', function () {
     return view('profile');
 });
+
+Route::get('/seller-page',function(){
+    return view('seller-page');
+});
