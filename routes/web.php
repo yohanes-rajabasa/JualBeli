@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartTransactionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 
 /*
@@ -23,9 +24,8 @@ Route::get('register', [RegisterController::class, 'create']);
 Route::post('register/customer', [RegisterController::class, 'customer']);
 Route::post('register/seller', [RegisterController::class, 'seller']);
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+Route::get('profile', [ProfileController::class, 'create']);
+Route::put('profile/edit', [ProfileController::class, 'update']);
 
 Route::get('/transaction',[CartTransactionController::class,'index']);
 
