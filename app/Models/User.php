@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'dob',
         'address',
+        'picture_path',
         'role_number'
     ];
 
