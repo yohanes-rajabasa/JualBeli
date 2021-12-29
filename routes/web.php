@@ -29,6 +29,9 @@ Route::get('profile', [ProfileController::class, 'create']);
 Route::put('profile/edit', [ProfileController::class, 'update']);
 
 Route::get('/transaction',[CartTransactionController::class,'index']);
+Route::post('/transaction',[CartTransactionController::class,'ajax']);
+
+
 
 Route::get('/seller-page',function(){
     return view('seller-page');

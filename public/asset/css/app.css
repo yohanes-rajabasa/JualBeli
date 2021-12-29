@@ -2,15 +2,6 @@
     background-color: plum;
 }
 
-.btn-bg-purple{
-    background-color: #7267CB !important;
-    font-size: 14px !important;
-}
-
-.btn-bg-purple:hover{
-    background-color: #EAEAEA !important;
-}
-
 input[type=number]::-webkit-inner-spin-button {
     opacity: 1
 }
@@ -19,3 +10,18 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: #A90011 !important;
 }
 
+.btn-bg-apps{
+    background-color: #A90011 !important;
+    color: #EAEAEA;
+}
+
+.btn-bg-apps:hover{
+    background-color: rgb(232, 76, 76) !important;
+}
+.btn-outline-apps{
+    border-color: #A90011 !important;
+}
+.btn-outline-apps:hover{
+    background-color: #A90011 !important;
+    color:white;
+}
