@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartTransactionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 
@@ -25,6 +26,8 @@ Route::post('register/seller', [RegisterController::class, 'seller']);
 Route::get('/profile', function () {
     return view('profile');
 });
+
+Route::get('/transaction',[CartTransactionController::class,'index']);
 
 Route::get('/seller-page',function(){
     return view('seller-page');
