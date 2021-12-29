@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\CartTransactionController;
+=======
+use App\Http\Controllers\ProductDetailController;
+>>>>>>> yohanes_product_detail
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
@@ -32,3 +36,9 @@ Route::get('/transaction',[CartTransactionController::class,'index']);
 Route::get('/seller-page',function(){
     return view('seller-page');
 });
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+// product detail
+Route::get('product/detail',[ProductDetailController::class,'showProductDetail']);
