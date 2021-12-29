@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InsertProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 
@@ -26,6 +27,12 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
-Route::get('/seller-page',function(){
+Route::get('/seller',function(){
     return view('seller-page');
+});
+
+// Route::post('/seller/insert-product',[InsertProductController::class, 'insert']);
+
+Route::get('/seller/insert-product', function(){
+    return view('insert-product');
 });
