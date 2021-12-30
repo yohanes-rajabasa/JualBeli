@@ -5,6 +5,9 @@ use App\Http\Controllers\ProductDetailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +45,14 @@ Route::get('/profile', function () {
 
 // product detail
 Route::get('product/detail',[ProductDetailController::class,'showProductDetail']);
+
+// login customer
+Route::get('/auth/login/customer',[LoginController::class,'showLoginCustomer']);
+Route::post('/auth/login/customer',[LoginController::class,'performLogin']);
+
+// login seller
+Route::get('/auth/login/seller',[LoginController::class,'showLoginSeller']);
+Route::post('/auth/login/seller',[LoginController::class,'performLogin']);
+
+// logout
+Route::get('/logout',[LoginController::class,'performLogout']);

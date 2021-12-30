@@ -27,7 +27,7 @@ class RegisterController extends Controller
 
         User::create($validateData);
 
-        return redirect('/login')->withSuccess('Successfully Registered Your Account');
+        return redirect('/auth/login/customer')->withSuccess('Successfully Registered Your Account');
     }
 
     public function seller(Request $request)
@@ -44,6 +44,6 @@ class RegisterController extends Controller
 
         User::create($validateData);
 
-        return redirect('/login')->with('success', 'Successfully Registered Your Account');
+        return redirect('/auth/login/seller')->with('success', 'Successfully Registered Your Account');
     }
 }

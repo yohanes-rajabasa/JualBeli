@@ -16,9 +16,16 @@
 
         <div class="p-0 col-2  align-self-center">
             <div class="d-flex justify-content-around">
-                <a class="btn btn-light active" href="http://">Login</a>
-
-                <a class="btn btn-light active" href="http://">Register</a>
+                
+                @auth
+                    <a class="btn btn-light active" href="/logout">Logout</a>
+                @endauth
+                
+                @guest    
+                    <a class="btn btn-light active" href="/auth/login/customer">Login</a>
+                    <a class="btn btn-light active" href="/register">Register</a>
+                @endguest
+                
             </div>
         </div>
 
