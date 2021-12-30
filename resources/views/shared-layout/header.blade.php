@@ -2,7 +2,7 @@
 
     <div class="bg-red-apps container-fluid m-0 row">
         <div class="col-sm-3 p-2">
-            <a href="http://"><img src="{{asset('/storage/logo.png')}}" alt="" srcset="" width="200px"></a>
+            <a href="{{ route('home')}}"><img src="{{asset('/storage/logo.png')}}" alt="" srcset="" width="200px"></a>
         </div>
 
         <div class="col-sm-7 align-self-center">

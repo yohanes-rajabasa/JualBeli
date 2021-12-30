@@ -22,7 +22,7 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('register', [RegisterController::class, 'create']);
 Route::post('register/customer', [RegisterController::class, 'customer']);
