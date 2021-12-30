@@ -17,15 +17,23 @@ class LoginController extends Controller
     }
 
     public function performLogin(Request $request){
+        // $validateData = $request->validate([
+        //     'email' => 'required',
+        //     'password' => 'required',
+        // ]);
+        
+        // if(Auth::attempt($validateData)){
+        //     return redirect('/');
+        // }
+        
         $validateData = $request->validate([
             'email' => 'required',
             'password' => 'required',
         ]);
-        
+
         if(Auth::attempt($validateData)){
             return redirect('/');
         }
-
         return redirect()->back()->withErrors('Invalid Login');
     }
 
