@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +12,11 @@
     <link rel="stylesheet" href="{{asset('asset/css/app.css')}}">
     <script src="{{asset('asset/js/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('asset/js/popper.min.js')}}"></script>
+    <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/app.css') }}">
 </head>
-<body>
+
+<body style="background-color: #FFFAEF">
     @include('shared-layout.header')
 
     <div class="container p-5">
@@ -21,5 +25,6 @@
     @include('shared-layout.footer')
 </body>
     <script src="{{asset('asset/js/bootstrap.js')}}"></script>
+<script src="{{ asset('asset/js/bootstrap.js') }}"></script>
 
 </html>

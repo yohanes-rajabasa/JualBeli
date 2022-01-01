@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartTransactionController;
 use App\Http\Controllers\ProductDetailController;
+use App\Http\Controllers\InsertProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
@@ -56,3 +57,12 @@ Route::post('/auth/login/seller',[LoginController::class,'performLogin']);
 
 // logout
 Route::get('/logout',[LoginController::class,'performLogout']);
+Route::get('/seller',function(){
+    return view('seller-page');
+});
+
+// Route::post('/seller/insert-product',[InsertProductController::class, 'insert']);
+
+Route::get('/seller/insert-product', function(){
+    return view('insert-product');
+});
