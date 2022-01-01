@@ -21,7 +21,7 @@ class UserFactory extends Factory
             'address' => $this->faker->sentence(10),
             'picture_path' => $this->faker->imageUrl(360, 360, 'user', true),
             'role_number' => $this->faker->numberBetween(1,2),
-            'email' => $this->faker->unique()->safeEmail(),
+            'email' => $this->faker->freeEmail(),
             'password' => Hash::make("12345678"),
         ];
     }
