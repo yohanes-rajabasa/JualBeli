@@ -22,7 +22,7 @@ class RegisterController extends Controller
             'address' => ['required', 'string', 'max:255']
         ]);
 
-        $validateData['password'] = Hash::make($validateData['password']);
+        // $validateData['password'] = Hash::make($validateData['password']);
         $validateData['role_number'] = 1;
 
         User::create($validateData);
@@ -39,7 +39,7 @@ class RegisterController extends Controller
             'address' => ['required', 'string', 'max:255']
         ]);
 
-        $validateData['password'] = Hash::make($validateData['password']);
+        // $validateData['password'] = Hash::make($validateData['password']);
         $validateData['role_number'] = 2;
 
         User::create($validateData);

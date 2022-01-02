@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use Illuminate\Http\Request;
 
 class CartTransactionController extends Controller
 {
     //
     public function index(Request $request){
-        if($request->ajax){
-            return view('cart-transaction')->with('ajax',1);
-        }
-        return view('cart-transaction')->with('ajax',0);
+        $carts = Cart::all();
+        return view('cart-transaction',['carts'=>$carts]);
     }
     public function ajax(Request $request){
         echo($request->ajax);
