@@ -11,9 +11,7 @@
     <link rel="stylesheet" href="{{asset('asset/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('asset/css/app.css')}}">
     <script src="{{asset('asset/js/jquery-3.5.1.min.js')}}"></script>
-    <script src="{{asset('asset/js/popper.min.js')}}"></script>
-    <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('asset/css/app.css') }}">
+
 </head>
 
 <body style="background-color: #FFFAEF">
@@ -24,7 +22,20 @@
     </div>
     @include('shared-layout.footer')
 </body>
-    <script src="{{asset('asset/js/bootstrap.js')}}"></script>
-<script src="{{ asset('asset/js/bootstrap.js') }}"></script>
 
+<script src="{{asset('asset/js/popper.min.js')}}"></script>
+<script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
+
+<!--
+<script src="{{asset('asset/js/bootstrap.bundle.min.js')}}"></script>
+
+<script src="{{asset('asset/js/bootstrap.js.map')}}"></script> -->
+<script>
+    $(document).ready(function(){
+        $('#myModal').on('shown.bs.modal', function() {
+            $('#myInput').trigger('focus')
+        })
+    });
+
+</script>
 </html>

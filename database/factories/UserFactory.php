@@ -22,7 +22,7 @@ class UserFactory extends Factory
             'picture_path' => $this->faker->imageUrl(360, 360, 'user', true),
             'role_number' => $this->faker->numberBetween(1,2),
             'email' => $this->faker->freeEmail(),
-            'password' => Hash::make("12345678"),
+            'password' =>"12345678",
         ];
     }
 

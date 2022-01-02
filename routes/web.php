@@ -33,9 +33,10 @@ Route::get('profile', [ProfileController::class, 'create']);
 Route::put('profile/edit', [ProfileController::class, 'update']);
 
 Route::get('/transaction',[CartTransactionController::class,'index']);
-Route::post('/transaction',[CartTransactionController::class,'ajax']);
-
-
+Route::delete('/transaction/cart/delete/{id}',[CartTransactionController::class,'deleteCart']);
+Route::post('/transaction',[CartTransactionController::class,'calcPrice']);
+Route::post('/transaction/cart/minQuantity',[CartTransactionController::class,'minQuantity']);
+Route::post('/transaction/cart/addQuantity',[CartTransactionController::class,'addQuantity']);
 
 Route::get('/seller-page',function(){
     return view('seller-page');

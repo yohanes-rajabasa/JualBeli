@@ -16,16 +16,16 @@
 
         <div class="p-0 col-2  align-self-center">
             <div class="d-flex justify-content-around">
-                
+
                 @auth
                     <a class="btn btn-light active" href="/logout">Logout</a>
                 @endauth
-                
-                @guest    
+
+                @guest
                     <a class="btn btn-light active" href="/auth/login/customer">Login</a>
                     <a class="btn btn-light active" href="/register">Register</a>
                 @endguest
-                
+
             </div>
         </div>
 
@@ -48,10 +48,10 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Thus
+                            {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">1</a></li>
+                            <li><a class="dropdown-item" href="/transaction">Cart & Transaction</a></li>
                             <li><a class="dropdown-item" href="#">2</a></li>
                             <li><a class="dropdown-item" href="#">3</a></li>
                             <li><a class="dropdown-item" href="#">4</a></li>
