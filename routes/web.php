@@ -38,9 +38,7 @@ Route::post('/transaction',[CartTransactionController::class,'calcPrice']);
 Route::post('/transaction/cart/minQuantity',[CartTransactionController::class,'minQuantity']);
 Route::post('/transaction/cart/addQuantity',[CartTransactionController::class,'addQuantity']);
 
-Route::get('/seller-page',function(){
-    return view('seller-page');
-});
+
 Route::get('/profile', function () {
     return view('profile');
 });
