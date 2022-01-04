@@ -4,7 +4,7 @@
         <p class="text-light m-0 a">© 2021-2023, JualBeli</p>
     </div>
 
-    <div class="col-1 d-flex">
+    <div class="col-md-1 col-4 d-flex">
         <div class="col">
             <img src="{{asset('/storage/insta-logo.png')}}" alt="" width="50px">
         </div>

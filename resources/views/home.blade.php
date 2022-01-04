@@ -20,18 +20,76 @@
             <img src="{{ asset('storage/banner/banner_temp_3.jpg') }}" class="d-block w-100" width="400px" height="300" alt="...">
         </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev" onclick="stateToNormal(event)">
         <div class="pt-1 rounded-3 bg-black">
-            <span class="carousel-control-prev-icon p-3 rounded-circle bg-black" aria-hidden="true"></span>
+            <span class="carousel-control-prev-icon p-3" aria-hidden="true"></span>
         </div>
         <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselBanner" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselBanner" data-bs-slide="next" onclick="stateToNormal(event)">
         <div class="pt-1 rounded-3 bg-black">
-            <span class="carousel-control-next-icon " aria-hidden="true"></span>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
         </div>
         <span class="visually-hidden">Next</span>
     </button>
 </div>
 
+<div>
+    <h2>Barang Populer!</h2>
+    <div class=" row row-cols-md-4 row-cols-2 mb-3">
+        @for ($i = 0; $i < 8; $i++)
+        <div class="col mb-4">
+            <div class="p-2 border border-secondary rounded-3">
+                <img class="img-fluid" src={{url('/storage/product/product1.jpg')}}>
+                <div class="text-center p-2">
+                    <p class="fw-bold mb-1">Baju Chicago</p>
+                    <p>Rp. XXXXX</p>
+                    <a href="" class="btn btn-dark rounded-pill">View Product</a>
+                </div>
+            </div>
+        </div>
+        @endfor
+    </div>
+
+    <h2>Perluas Seleramu!</h2>
+    <div class=" row row-cols-md-4 row-cols-2 mb-3">
+        @for ($i = 0; $i < 8; $i++)
+        <div class="col mb-4">
+            <div class="p-2 border border-secondary rounded-3">
+                <img class="img-fluid" src={{url('/storage/product/product1.jpg')}}>
+                <div class="text-center p-2">
+                    <p class="fw-bold mb-1">Baju Chicago</p>
+                    <p>Rp. XXXXX</p>
+                    <a href="" class="btn btn-dark rounded-pill">View Product</a>
+                </div>
+            </div>
+        </div>
+        @endfor
+    </div>
+
+    <h2>Barang Bekas Kualitas Baru!</h2>
+    <div class=" row row-cols-md-4 row-cols-2 mb-3">
+        @for ($i = 0; $i < 8; $i++)
+        <div class="col mb-4">
+            <div class="p-2 border border-secondary rounded-3">
+                <img class="img-fluid" src={{url('/storage/product/product1.jpg')}}>
+                <div class="text-center p-2">
+                    <p class="fw-bold mb-1">Baju Chicago</p>
+                    <p>Rp. XXXXX</p>
+                    <a href="" class="btn btn-dark rounded-pill">View Product</a>
+                </div>
+            </div>
+        </div>
+        @endfor
+    </div>
+</div>
+
+@endsection
+
+@section('script')
+<script>
+    function stateToNormal(e){
+        $(e.currentTarget).trigger("blur");
+    }
+</script>
 @endsection

@@ -25,6 +25,8 @@
 
 <script src="{{asset('asset/js/popper.min.js')}}"></script>
 <script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
+{{-- bootstrap.min.js nya versi 4.0, bukan bootstrap 5 --}}
+<script src="{{asset('asset/js/bootstrap.js')}}"></script>
 
 <!--
 <script src="{{asset('asset/js/bootstrap.bundle.min.js')}}"></script>
@@ -38,4 +40,5 @@
     });
 
 </script>
+@yield('script')
 </html>
