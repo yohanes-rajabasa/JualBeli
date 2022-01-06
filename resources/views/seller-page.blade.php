@@ -14,6 +14,30 @@
     <hr class="dropdown-divider">
 
     <div class="row row-cols-1 row-cols-md-4 g-4">
+        @foreach ($products as $p)
+            <form action="/deleteProduct/{{ $p->id }}" method="POST" class="m-auto">
+                @csrf
+                @method('delete')
+                <div class="col">
+                    <div class="card">
+                        <div class="mx-auto pt-2">
+                            <img src="{{ Storage::url($p->image) }}"
+                                style="width: 200px; height: 200px; border: 2px solid; border-radius: 10px; border-color: #A90011;"
+                                class="card-img-top img-fluid" alt="...">
+                        </div>
+                        <div class="card-body row">
+                            <p class="card-title fs-3 text-center pb-0">{{ $p->name }}</p>
+                            <p class="fs-5 card-text text-center pt-0">{{ $p->price }}</p>
+
+                            <div class="d-grid gap-2">
+                                <a class="btn btn-dark m-auto" href="/seller/insert-product/"> edit product</a>
+                                <button type="submit" class="btn btn-danger m-auto">delete product</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        @endforeach
         <div class="col">
             <div class="card">
                 <div class="mx-auto pt-2">
@@ -26,8 +50,12 @@
                     <p class="fs-5 card-text text-center pt-0">Rp.xxxxxxx</p>
 
                     <div class="d-grid gap-2">
-                        <button class="btn btn-dark m-auto">edit product</button>
-                        <button class=" btn btn-danger m-auto">delete product</button>
+                        <a class="btn btn-dark m-auto" href="/seller/insert-product/"> edit product</a>
+                        <form action="/deleteProduct/{{ $p->id }}" method="POST" class="m-auto">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger m-auto">delete product</button>
+                        </form>
                     </div>
                 </div>
             </div>

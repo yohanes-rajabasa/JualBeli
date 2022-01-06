@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
-
-
+use App\Http\Controllers\SellerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,12 +55,10 @@ Route::post('/auth/login/seller',[LoginController::class,'performLogin']);
 
 // logout
 Route::get('/logout',[LoginController::class,'performLogout']);
-Route::get('/seller',function(){
-    return view('seller-page');
-});
 
-// Route::post('/seller/insert-product',[InsertProductController::class, 'insert']);
-
-Route::get('/seller/insert-product', function(){
-    return view('insert-product');
+Route::middleware(['auth', 'seller'])->group(function () {
+    Route::get('/seller',[SellerController::class, 'sellerPageView']);
+    Route::get('/seller/insert-product',[SellerController::class, 'insertProductView']);
+    Route::post('/seller/insert-product',[SellerController::class, 'insertProduct']);
+    Route::delete('/deleteProduct/{id}',[SellerController::class, 'deleteProduct']);
 });
