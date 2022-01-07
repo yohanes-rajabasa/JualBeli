@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Detail;
+use App\Models\Transaction;
 use Illuminate\Contracts\Session\Session as SessionSession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,7 +46,8 @@ class CartTransactionController extends Controller
         echo ($id);
     }
 
-    public function addQuantity(Request $request){
+    public function addQuantity(Request $request)
+    {
         $id = (int) $request->id;
         $quantity = (int) $request->qty;
         $cart = Cart::find($id);
@@ -59,6 +62,30 @@ class CartTransactionController extends Controller
     {
         $cart = Cart::find($id);
         $cart->delete();
+        return redirect()->back();
+    }
+
+    public function checkout(Request $request)
+    {
+        $allInput = $request->all();
+        $count = count($request->all());
+
+        $transaction = new Transaction();
+        $transaction->transaction_date = date("Y-m-d");
+        $transaction->user_id = Auth::user()->id;
+        $transaction->save();
+
+        for ($i = 1; $i < $count - 1; $i++) {
+            $cartId = $allInput["inputBox" . $i];
+            $cart = Cart::where("id", "=", $cartId)->first();
+            $detail = new Detail();
+
+            $detail->qty = $cart->qty;
+            $detail->product_id = $cart->product_id;
+            $detail->transaction_id = $transaction->id;
+            $detail->save();
+            $cart->delete();
+        }
         return redirect()->back();
     }
 }

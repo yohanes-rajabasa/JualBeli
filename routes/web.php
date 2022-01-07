@@ -36,7 +36,7 @@ Route::delete('/transaction/cart/delete/{id}',[CartTransactionController::class,
 Route::post('/transaction',[CartTransactionController::class,'calcPrice']);
 Route::post('/transaction/cart/minQuantity',[CartTransactionController::class,'minQuantity']);
 Route::post('/transaction/cart/addQuantity',[CartTransactionController::class,'addQuantity']);
-
+Route::post('/transaction/cart/checkout',[CartTransactionController::class,'checkout']);
 
 Route::get('/profile', function () {
     return view('profile');
