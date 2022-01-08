@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Detail;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 
 class DetailSeeder extends Seeder
@@ -23,11 +24,21 @@ class DetailSeeder extends Seeder
 
     public function insertData($insertTimes, $transactionId){
         for($i = 1 ; $i <= $insertTimes ; $i++){
+            $productId = rand(1,20);
+            $productData = Product::where('id','=',$productId)->first();
+            $rndQty = rand(1,$productData->stock);
+
             Detail::create([
-                'qty' => rand(1,10),
-                'product_id' => rand(1,20),
+                'qty' => $rndQty,
+                'product_id' => $productId,
                 'transaction_id' => $transactionId,
             ]);
+
+            // decrement stock of product
+            $productQtyTemp = $productData->stock - $rndQty;
+            if($productQtyTemp < 0) $productQtyTemp = 0;
+            $productData->stock = $productQtyTemp;
+            $productData->save();
         }
     }
 }
