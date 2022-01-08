@@ -1,15 +1,16 @@
 @extends('shared-layout.layout')
 
 @section('title')
-    <title>Insert Product</title>
+    <title>Update Product</title>
 
 @section('content')
 
     <div class="row align-items-center">
-        <p class="fs-1 pt-0 col align-self-start text-danger"> Insert Product</p>
+        <p class="fs-1 pt-0 col align-self-start text-danger"> Update Product</p>
         <form class="mt-4" style=" border: 5px solid; border-radius: 10px; border-color: #A90011;"
-            action="/seller/insert-product" method="POST" enctype="multipart/form-data">
+            action="/seller/update-product" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('put')
             <div class="form-group">
                 <label class="pt-4" style="color: #A90011; font-size: 20px">Product Name</label>
                 <input type="text" class="form-control mt-2 @error('name') is-invalid @enderror" name="name"
@@ -46,7 +47,7 @@
                 <label class="pt-4" style="color: #A90011; font-size: 20px">Product Description</label>
                 <textarea type="text" class="form-control mt-2 @error('description') is-invalid @enderror"
                     name="description" placeholder="Describe your product here.." style="border-color: #A90011">
-                                </textarea>
+                        </textarea>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}

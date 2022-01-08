@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use PDO;
 
 class SellerController extends Controller
 {
@@ -51,5 +50,10 @@ class SellerController extends Controller
         $products->delete();
 
         return redirect()->back();
+    }
+
+    public function updateProduct(Request $request){
+        $id = $request->Product_id;
+        $product = Product::find($id);
     }
 }
