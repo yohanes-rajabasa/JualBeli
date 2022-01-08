@@ -12,10 +12,9 @@
         </div>
     </div>
     <hr class="dropdown-divider">
-
     <div class="row row-cols-1 row-cols-md-4 g-4">
         @foreach ($products as $p)
-            <form action="/deleteProduct/{{ $p->id }}" method="POST" class="m-auto">
+            <form action="/deleteProduct/{{ $p->id }}" method="POST">
                 @csrf
                 @method('delete')
                 <div class="col">
@@ -51,11 +50,7 @@
 
                     <div class="d-grid gap-2">
                         <a class="btn btn-dark m-auto" href="/seller/insert-product/"> edit product</a>
-                        <form action="/deleteProduct/{{ $p->id }}" method="POST" class="m-auto">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger m-auto">delete product</button>
-                        </form>
+                        <button type="submit" class="btn btn-danger m-auto">delete product</button>
                     </div>
                 </div>
             </div>
