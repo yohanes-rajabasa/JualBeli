@@ -43,7 +43,7 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarCollapsed">
                 <ul class="navbar-nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/register">About Us</a>
