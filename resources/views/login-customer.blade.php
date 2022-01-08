@@ -5,7 +5,20 @@
 @endsection
 
 @section('content')
-    <p>login customer</p>
+<style>
+     p{
+        color: aliceblue;
+    }
+    label{
+        color: aliceblue;
+    }
+    .containerlogin{
+        background-image: url('{{asset('asset/login-background.png')}}')
+    }
+</style>
+<div class="containerlogin">
+    @section('content')
+    <p>Login customer</p>
     <form action="/auth/login/customer" method="post">
         @csrf
         <label for="email">Email</label><br>
@@ -29,4 +42,5 @@
             </ul>
         </div>
     @endif
+
 @endsection
