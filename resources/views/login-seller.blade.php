@@ -14,12 +14,13 @@
     }
     .containerlogin{
         background-image: url('{{asset('asset/login-background.png')}}');
+        background-size: cover;
         padding: 100px;
         border-radius: 30px;
     }
 </style>
 <div class="containerlogin">
-    
+
     <p class="h3 text-center title-login">Login Seller</p>
     <form action="/auth/login/customer" method="post">
         @csrf
@@ -30,7 +31,7 @@
               </svg></span>
             <input type="text" class="form-control" placeholder="E-mail" aria-label="Username" aria-describedby="basic-addon1" name="email">
         </div>
-    
+
         <label for="basic-url" class="form-label">Password</label>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
@@ -43,7 +44,7 @@
         <div class="d-grid gap-2">
             <button type="submit" class="btn-outline-apps">Login</button>
         </div>
-        
+
     </form><br>
     <p class="text-center"><a href="/auth/login/customer" class="text-decoration-none title-login">Login as Customer</a></p>
 
@@ -56,5 +57,5 @@
             </ul>
         </div>
     @endif
-</div>  
+</div>
 @endsection

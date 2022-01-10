@@ -14,6 +14,7 @@
     }
     .containerlogin{
         background-image: url('{{asset('asset/login-background.png')}}');
+        background-size: cover;
         padding: 100px;
         border-radius: 30px;
     }
@@ -42,7 +43,7 @@
         </div>
         <br>
         <div class="d-grid gap-2">
-            <button type="submit" class="btn-outline-apps">Login</button>
+            <button type="submit" class="btn btn-outline-apps">Login</button>
         </div>
     </form><br>
     <p class="text-center"><a href="/auth/login/seller" class="text-decoration-none title-login">Login as Seller</a></p>
