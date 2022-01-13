@@ -43,7 +43,7 @@ Route::get('/profile', function () {
 });
 
 // product detail
-Route::get('product/detail',[ProductDetailController::class,'showProductDetail']);
+Route::get('product/{id}/detail',[ProductDetailController::class,'showProductDetail']);
 
 // login customer
 Route::get('/auth/login/customer',[LoginController::class,'showLoginCustomer'])->name('login');
