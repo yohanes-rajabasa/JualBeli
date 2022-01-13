@@ -46,7 +46,7 @@ Route::get('/profile', function () {
 Route::get('product/detail',[ProductDetailController::class,'showProductDetail']);
 
 // login customer
-Route::get('/auth/login/customer',[LoginController::class,'showLoginCustomer']);
+Route::get('/auth/login/customer',[LoginController::class,'showLoginCustomer'])->name('login');
 Route::post('/auth/login/customer',[LoginController::class,'performLogin']);
 
 // login seller
