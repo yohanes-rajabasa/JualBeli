@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartTransactionController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\InsertProductController;
 use Illuminate\Support\Facades\Route;
@@ -20,9 +21,7 @@ use App\Http\Controllers\SellerController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('register', [RegisterController::class, 'create']);
 Route::post('register/customer', [RegisterController::class, 'customer']);
