@@ -7,9 +7,9 @@
         </div>
 
         <div class="col-sm-7 align-self-center">
-            <form action="">
+            <form action="{{url('/search')}}" method="GET">
                 <div class="form-group d-flex align-self-center">
-                    <input class="form-control " type="search" name="" id="" placeholder="Search...">
+                    <input class="form-control " type="search" name="search_query" id="search_query" value="{{ !empty($query) ? $query : ''}}" placeholder="Search...">
                     <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
                 </div>
             </form>

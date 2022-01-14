@@ -9,6 +9,7 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{asset('asset/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('asset/css/app.css')}}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="{{asset('asset/js/jquery-3.5.1.min.js')}}"></script>
 
 </head>

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SellerController;
 
 /*
@@ -22,6 +23,8 @@ use App\Http\Controllers\SellerController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/search', [ProductController::class,'search'])->name('search');
 
 Route::get('register', [RegisterController::class, 'create']);
 Route::post('register/customer', [RegisterController::class, 'customer']);

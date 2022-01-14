@@ -47,7 +47,7 @@
         <div class=" row row-cols-md-4 row-cols-2 mb-3">
             @forelse ($products['popular'] as $product)
                 <div class="col mb-4">
-                    <div class="p-2 border border-secondary rounded-3">
+                    <div class="p-2 border border-secondary rounded-3 bg-white">
                         <img class="img-fluid" src={{ asset('storage/'.$product->picture_path) }}>
                         <div class="text-center p-2">
                             <p class="fw-bold mb-1">{{$product->name}}</p>
@@ -59,7 +59,7 @@
             @empty
                 @for ($i = 0; $i < 8; $i++)
                     <div class="col mb-4">
-                        <div class="p-2 border border-secondary rounded-3">
+                        <div class="p-2 border border-secondary rounded-3 bg-white">
                             <img class="img-fluid" src={{ url('/storage/product/product1.jpg') }}>
                             <div class="text-center p-2">
                                 <p class="fw-bold mb-1">Baju Chicago</p>
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                 @endfor
-                {{-- <p class="text-center fw-bold">Maaf, Sepertinya Barang Tidak Ada :(</p> --}}
+                {{-- <p class="text-center fw-bold">Sorry, the item you're looking for is not found :(</p> --}}
             @endforelse
         </div>
 
@@ -77,7 +77,7 @@
         <div class=" row row-cols-md-4 row-cols-2 mb-3">
             @forelse ($products['random'] as $product)
                 <div class="col mb-4">
-                    <div class="p-2 border border-secondary rounded-3">
+                    <div class="p-2 border border-secondary rounded-3 bg-white">
                         <img class="img-fluid" src={{ asset('storage/'.$product->picture_path) }}>
                         <div class="text-center p-2">
                             <p class="fw-bold mb-1">{{$product->name}}</p>
@@ -89,7 +89,7 @@
             @empty
                 @for ($i = 0; $i < 8; $i++)
                     <div class="col mb-4">
-                        <div class="p-2 border border-secondary rounded-3">
+                        <div class="p-2 border border-secondary rounded-3 bg-white">
                             <img class="img-fluid" src={{ url('/storage/product/product1.jpg') }}>
                             <div class="text-center p-2">
                                 <p class="fw-bold mb-1">Baju Chicago</p>
@@ -99,7 +99,7 @@
                         </div>
                     </div>
                 @endfor
-                {{-- <p class="text-center fw-bold">Maaf, Sepertinya Barang Tidak Ada :(</p> --}}
+                {{-- <p class="text-center fw-bold">Sorry, the item you're looking for is not found :(</p> --}}
             @endforelse
         </div>
 
@@ -107,7 +107,7 @@
         <div class=" row row-cols-md-4 row-cols-2 mb-3">
             @forelse ($products['secondhand'] as $product)
                 <div class="col mb-4">
-                    <div class="p-2 border border-secondary rounded-3">
+                    <div class="p-2 border border-secondary rounded-3 bg-white">
                         <img class="img-fluid" src={{ asset('storage/'.$product->picture_path) }}>
                         <div class="text-center p-2">
                             <p class="fw-bold mb-1">{{$product->name}}</p>
@@ -119,7 +119,7 @@
             @empty
                 @for ($i = 0; $i < 8; $i++)
                     <div class="col mb-4">
-                        <div class="p-2 border border-secondary rounded-3">
+                        <div class="p-2 border border-secondary rounded-3 bg-white">
                             <img class="img-fluid" src={{ url('/storage/product/product1.jpg') }}>
                             <div class="text-center p-2">
                                 <p class="fw-bold mb-1">Baju Chicago</p>
@@ -129,7 +129,7 @@
                         </div>
                     </div>
                 @endfor
-                {{-- <p class="text-center fw-bold">Maaf, Sepertinya Barang Tidak Ada :(</p> --}}
+                {{-- <p class="text-center fw-bold">Sorry, the item you're looking for is not found :(</p> --}}
             @endforelse
         </div>
     </div>
