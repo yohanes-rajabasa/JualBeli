@@ -8,10 +8,11 @@
     <div class="row align-items-center">
         <p class="fs-1 pt-0 col align-self-start text-danger"> Update Product</p>
         <form class="mt-4" style=" border: 5px solid; border-radius: 10px; border-color: #A90011;"
-            action="/seller/update-product" method="POST" enctype="multipart/form-data">
+            action="{{ route('performUpdateProduct') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('put')
+            @method('PUT')
             <div class="form-group">
+                <input type="hidden" name="id" value={{ $product->id }}>
                 <label class="pt-4" style="color: #A90011; font-size: 20px">Product Name</label>
                 <input type="text" class="form-control mt-2 @error('name') is-invalid @enderror" name="name"
                     placeholder="enter product name" style="border-color: #A90011" value="{{ old('name') }}">
@@ -47,7 +48,7 @@
                 <label class="pt-4" style="color: #A90011; font-size: 20px">Product Description</label>
                 <textarea type="text" class="form-control mt-2 @error('description') is-invalid @enderror"
                     name="description" placeholder="Describe your product here.." style="border-color: #A90011">
-                        </textarea>
+                                                </textarea>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -63,7 +64,7 @@
             </div>
             <div class="mt-5 mb-5">
                 <button type="submit" class="float-end btn btn-primary mb-3 me-2"
-                    style="background-color: #A90011; border:none">Insert
+                    style="background-color: #A90011; border:none">Update
                     Product</button>
             </div>
         </form>

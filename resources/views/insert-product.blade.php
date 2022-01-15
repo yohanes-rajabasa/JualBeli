@@ -46,7 +46,7 @@
                 <label class="pt-4" style="color: #A90011; font-size: 20px">Product Description</label>
                 <textarea type="text" class="form-control mt-2 @error('description') is-invalid @enderror"
                     name="description" placeholder="Describe your product here.." style="border-color: #A90011">
-                                </textarea>
+                                    </textarea>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -62,7 +62,8 @@
             </div>
             <div class="mt-5 mb-5">
                 <button type="submit" class="float-end btn btn-primary mb-3 me-2"
-                    style="background-color: #A90011; border:none">Insert
+                    style="background-color: #A90011; border:none"
+                    onclick="return confirm('insert product confirmation')">Insert
                     Product</button>
             </div>
         </form>
