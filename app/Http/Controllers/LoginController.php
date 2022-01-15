@@ -35,7 +35,11 @@ class LoginController extends Controller
         // $user = User::where('email','=',$request->email)->where('password','=',$request->password);
         // dd($user);
         if(Auth::attempt($validateData,true)){
-            return redirect('/');
+            if(Auth::user()->role_number === 1 ){
+                return redirect('/');
+            }else{
+                return redirect('/seller');
+            }
         }
         return redirect()->back()->withErrors('Invalid Login');
     }

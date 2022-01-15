@@ -45,8 +45,7 @@
             <div class="form-group">
                 <label class="pt-4" style="color: #A90011; font-size: 20px">Product Description</label>
                 <textarea type="text" class="form-control mt-2 @error('description') is-invalid @enderror"
-                    name="description" placeholder="Describe your product here.." style="border-color: #A90011">
-                                    </textarea>
+                    name="description" placeholder="Describe your product here.." style="border-color: #A90011"></textarea>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -54,11 +53,12 @@
                 @enderror
             </div>
             <div class="row">
-                <p class="col-sm-6 col-md-3 mt-4" style="font-size: 20px"> Insert Product Image</p>
-                <div class="mt-4 col-6 col-md-9 pe-6">
-                    <input class="file-upload form-control form-control-sm" style="border-color: #A90011" type="file"
+                <p class="col-sm-6 col-md-3 mt-4 pe-5" style="font-size: 20px"> Insert Product Image</p>
+                <div class="mt-4 col-sm-6 col-md-6">
+                    <input class="file-upload form-control form-control-sm" style="border-color: #A90011; " type="file"
                         name="image" id="image">
                 </div>
+                {{-- <div class="col-md-3"></div> --}}
             </div>
             <div class="mt-5 mb-5">
                 <button type="submit" class="float-end btn btn-primary mb-3 me-2"

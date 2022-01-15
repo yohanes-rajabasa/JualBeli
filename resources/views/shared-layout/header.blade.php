@@ -7,9 +7,10 @@
         </div>
 
         <div class="col-sm-7 align-self-center">
-            <form action="{{url('/search')}}" method="GET">
+            <form action="{{ url('/search') }}" method="GET">
                 <div class="form-group d-flex align-self-center">
-                    <input class="form-control " type="search" name="search_query" id="search_query" value="{{ !empty($query) ? $query : ''}}" placeholder="Search...">
+                    <input class="form-control " type="search" name="search_query" id="search_query"
+                        value="{{ !empty($query) ? $query : '' }}" placeholder="Search...">
                     <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
                 </div>
             </form>
@@ -49,18 +50,34 @@
                         <a class="nav-link" aria-current="page" href="/register">About Us</a>
                     </li>
                     if(@auth
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ Auth::user()->name }}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/transaction">Cart & Transaction</a></li>
-                                <li><a class="dropdown-item" href="#">2</a></li>
-                                <li><a class="dropdown-item" href="#">3</a></li>
-                                <li><a class="dropdown-item" href="#">4</a></li>
-                            </ul>
-                        </li>
+                        @if (Auth::user()->role_number === 2)
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ Auth::user()->name }}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/seller">Manage Product</a></li>
+                                    <li><a class="dropdown-item" href="#">2</a></li>
+                                    <li><a class="dropdown-item" href="#">3</a></li>
+                                    <li><a class="dropdown-item" href="#">4</a></li>
+                                </ul>
+                            </li>
+                        @else
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ Auth::user()->name }}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/transaction">Cart & Transaction</a></li>
+                                    <li><a class="dropdown-item" href="#">2</a></li>
+                                    <li><a class="dropdown-item" href="#">3</a></li>
+                                    <li><a class="dropdown-item" href="#">4</a></li>
+                                </ul>
+                            </li>
+                        @endif
+
                     @endauth)
 
                 </ul>

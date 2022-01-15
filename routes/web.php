@@ -23,6 +23,7 @@ use App\Http\Middleware\EnsureLogin;
 |
 */
 
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/search', [ProductController::class, 'search'])->name('search');

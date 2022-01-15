@@ -15,7 +15,8 @@
                 <input type="hidden" name="id" value={{ $product->id }}>
                 <label class="pt-4" style="color: #A90011; font-size: 20px">Product Name</label>
                 <input type="text" class="form-control mt-2 @error('name') is-invalid @enderror" name="name"
-                    placeholder="enter product name" style="border-color: #A90011" value="{{ old('name') }}">
+                    placeholder="enter product name" style="border-color: #A90011"
+                    value="{{ old('name') !== null ? old('name') : $product->name }}">
                 @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -26,7 +27,8 @@
                 <label class="pt-4" style="color: #A90011; font-size: 20px">Quantity</label>
                 <input type="number" style="width: 100px; height: 50px;"
                     class="form-control mt-2 @error('quantity') is-invalid @enderror" name="quantity"
-                    style="border-color: #A90011" value="{{ old('quantity') }}">
+                    style="border-color: #A90011"
+                    value="{{ old('quantity') !== null ? old('quantity') : $product->stock }}">
                 @error('quantity')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -37,7 +39,7 @@
                 <label class="pt-4" style="color: #A90011; font-size: 20px">Price</label>
                 <input type="number" style="width: 100px; height: 50px;"
                     class="form-control mt-2 @error('price') is-invalid @enderror" name="price"
-                    style="border-color: #A90011" value="{{ old('price') }}">
+                    style="border-color: #A90011" value="{{ old('price') !== null ? old('price') : $product->price }}">
                 @error('price')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -47,8 +49,8 @@
             <div class="form-group">
                 <label class="pt-4" style="color: #A90011; font-size: 20px">Product Description</label>
                 <textarea type="text" class="form-control mt-2 @error('description') is-invalid @enderror"
-                    name="description" placeholder="Describe your product here.." style="border-color: #A90011">
-                                                </textarea>
+                    name="description" placeholder="Describe your product here.."
+                    style="border-color: #A90011">{{ old('description') !== null ? old('description') : $product->desc }}</textarea>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -56,8 +58,8 @@
                 @enderror
             </div>
             <div class="row">
-                <p class="col-sm-6 col-md-3 mt-4" style="font-size: 20px"> Insert Product Image</p>
-                <div class="mt-4 col-6 col-md-9 pe-6">
+                <p class="col-sm-6 col-md-3 mt-4 pe-5" style="font-size: 20px"> Insert Product Image</p>
+                <div class="mt-4 col-sm-6 col-md-6">
                     <input class="file-upload form-control form-control-sm" style="border-color: #A90011" type="file"
                         name="image" id="image">
                 </div>

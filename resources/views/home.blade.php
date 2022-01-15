@@ -48,12 +48,18 @@
             @forelse ($products['popular'] as $product)
                 <div class="col mb-4">
                     <div class="p-2 border border-secondary rounded-3 bg-white">
-                        <img class="img-fluid" src={{ asset('storage/'.$product->picture_path) }}>
+                        <div class="text-center">
+                            <img class="img-fluid"
+                                style="width: 200px; height: 200px; border: 2px solid; border-radius: 10px; border-color: #A90011;"
+                                src={{ asset('storage/' . $product->picture_path) }}>
+                        </div>
                         <div class="text-center p-2">
-                            <p class="fw-bold mb-1">{{$product->name}}</p>
-                            <p>Rp. {{$product->price}}</p>
-                            <a href="{{ url('product/'.$product->id.'/detail')}}" class="btn btn-dark rounded-pill">View Product</a>
-                        </div>   
+                            <p class="fw-bold mb-1">{{ $product->name }}</p>
+                            <p>Rp. {{ $product->price }}</p>
+                            <a href="{{ url('product/' . $product->id . '/detail') }}"
+                                class="btn btn-dark rounded-pill">View
+                                Product</a>
+                        </div>
                     </div>
                 </div>
             @empty
@@ -78,12 +84,18 @@
             @forelse ($products['random'] as $product)
                 <div class="col mb-4">
                     <div class="p-2 border border-secondary rounded-3 bg-white">
-                        <img class="img-fluid" src={{ asset('storage/'.$product->picture_path) }}>
+                        <div class="text-center">
+                            <img class="img-fluid"
+                                style="width: 200px; height: 200px; border: 2px solid; border-radius: 10px; border-color: #A90011;"
+                                src={{ asset('storage/' . $product->picture_path) }}>
+                        </div>
                         <div class="text-center p-2">
-                            <p class="fw-bold mb-1">{{$product->name}}</p>
-                            <p>Rp. {{$product->price}}</p>
-                            <a href="{{ url('product/'.$product->id.'/detail')}}" class="btn btn-dark rounded-pill">View Product</a>
-                        </div>   
+                            <p class="fw-bold mb-1">{{ $product->name }}</p>
+                            <p>Rp. {{ $product->price }}</p>
+                            <a href="{{ url('product/' . $product->id . '/detail') }}"
+                                class="btn btn-dark rounded-pill">View
+                                Product</a>
+                        </div>
                     </div>
                 </div>
             @empty
@@ -108,12 +120,18 @@
             @forelse ($products['secondhand'] as $product)
                 <div class="col mb-4">
                     <div class="p-2 border border-secondary rounded-3 bg-white">
-                        <img class="img-fluid" src={{ asset('storage/'.$product->picture_path) }}>
+                        <div class="text-center">
+                            <img class="img-fluid"
+                                style="width: 200px; height: 200px; border: 2px solid; border-radius: 10px; border-color: #A90011;"
+                                src={{ asset('storage/' . $product->picture_path) }}>
+                        </div>
                         <div class="text-center p-2">
-                            <p class="fw-bold mb-1">{{$product->name}}</p>
-                            <p>Rp. {{$product->price}}</p>
-                            <a href="{{ url('product/'.$product->id.'/detail')}}" class="btn btn-dark rounded-pill">View Product</a>
-                        </div>   
+                            <p class="fw-bold mb-1">{{ $product->name }}</p>
+                            <p>Rp. {{ $product->price }}</p>
+                            <a href="{{ url('product/' . $product->id . '/detail') }}"
+                                class="btn btn-dark rounded-pill">View
+                                Product</a>
+                        </div>
                     </div>
                 </div>
             @empty
