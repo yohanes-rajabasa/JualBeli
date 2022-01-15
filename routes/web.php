@@ -60,7 +60,9 @@ Route::get('/logout',[LoginController::class,'performLogout']);
 
 Route::middleware(['auth', 'seller'])->group(function () {
     Route::get('/seller',[SellerController::class, 'sellerPageView']);
-    Route::get('/seller/insert-product',[SellerController::class, 'insertProductView']);
-    Route::post('/seller/insert-product',[SellerController::class, 'insertProduct']);
-    Route::delete('/deleteProduct/{id}',[SellerController::class, 'deleteProduct']);
+    Route::get('/seller/insert-product',[ProductController::class, 'insertProductView']);
+    Route::post('/seller/insert-product',[ProductController::class, 'insertProduct']);
+    Route::get('/seller/update-product/{id}',[ProductController::class,'updateProductView'])->name('showUpdateProduct');
+    Route::put('/seller/update-product',[ProductController::class,'updateProduct'])->name('performUpdateProduct');
+    Route::delete('/deleteProduct/{id}',[ProductController::class, 'deleteProduct']);
 });
