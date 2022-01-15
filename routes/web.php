@@ -10,6 +10,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SellerController;
+use App\Http\Middleware\EnsureLogin;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ use App\Http\Controllers\SellerController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/search', [ProductController::class,'search'])->name('search');
+Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 Route::get('register', [RegisterController::class, 'create']);
 Route::post('register/customer', [RegisterController::class, 'customer']);
@@ -33,34 +34,38 @@ Route::post('register/seller', [RegisterController::class, 'seller']);
 Route::get('profile', [ProfileController::class, 'create']);
 Route::put('profile/edit', [ProfileController::class, 'update']);
 
-Route::get('/transaction',[CartTransactionController::class,'index']);
-Route::delete('/transaction/cart/delete/{id}',[CartTransactionController::class,'deleteCart']);
-Route::post('/transaction',[CartTransactionController::class,'calcPrice']);
-Route::post('/transaction/cart/minQuantity',[CartTransactionController::class,'minQuantity']);
-Route::post('/transaction/cart/addQuantity',[CartTransactionController::class,'addQuantity']);
-Route::post('/transaction/cart/checkout',[CartTransactionController::class,'checkout']);
+Route::middleware(EnsureLogin::class)->group(function () {
+    Route::get('/transaction', [CartTransactionController::class, 'index']);
+    Route::get('/transaction/detail/{id}', [CartTransactionController::class, 'detailTransaction']);
+    Route::delete('/transaction/cart/delete/{id}', [CartTransactionController::class, 'deleteCart']);
+});
+Route::post('/transaction', [CartTransactionController::class, 'calcPrice']);
+Route::post('/transaction/cart/minQuantity', [CartTransactionController::class, 'minQuantity']);
+Route::post('/transaction/cart/addQuantity', [CartTransactionController::class, 'addQuantity']);
+Route::post('/transaction/cart/checkout', [CartTransactionController::class, 'checkout']);
+
 
 Route::get('/profile', function () {
     return view('profile');
 });
 
 // product detail
-Route::get('product/{id}/detail',[ProductDetailController::class,'showProductDetail']);
+Route::get('product/{id}/detail', [ProductDetailController::class, 'showProductDetail']);
 
 // login customer
-Route::get('/auth/login/customer',[LoginController::class,'showLoginCustomer'])->name('login');
-Route::post('/auth/login/customer',[LoginController::class,'performLogin']);
+Route::get('/auth/login/customer', [LoginController::class, 'showLoginCustomer'])->name('login');
+Route::post('/auth/login/customer', [LoginController::class, 'performLogin']);
 
 // login seller
-Route::get('/auth/login/seller',[LoginController::class,'showLoginSeller']);
-Route::post('/auth/login/seller',[LoginController::class,'performLogin']);
+Route::get('/auth/login/seller', [LoginController::class, 'showLoginSeller']);
+Route::post('/auth/login/seller', [LoginController::class, 'performLogin']);
 
 // logout
-Route::get('/logout',[LoginController::class,'performLogout']);
+Route::get('/logout', [LoginController::class, 'performLogout']);
 
 Route::middleware(['auth', 'seller'])->group(function () {
-    Route::get('/seller',[SellerController::class, 'sellerPageView']);
-    Route::get('/seller/insert-product',[SellerController::class, 'insertProductView']);
-    Route::post('/seller/insert-product',[SellerController::class, 'insertProduct']);
-    Route::delete('/deleteProduct/{id}',[SellerController::class, 'deleteProduct']);
+    Route::get('/seller', [SellerController::class, 'sellerPageView']);
+    Route::get('/seller/insert-product', [SellerController::class, 'insertProductView']);
+    Route::post('/seller/insert-product', [SellerController::class, 'insertProduct']);
+    Route::delete('/deleteProduct/{id}', [SellerController::class, 'deleteProduct']);
 });

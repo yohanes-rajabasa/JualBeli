@@ -32,9 +32,11 @@
         </div>
     </div>
     <!-- ======================================================= -->
+
+
     <form action="/transaction/cart/checkout" method="post">
         @csrf
-        <?php $idx = 0;?>
+        <?php $idx = 1; ?>
         @foreach ($carts as $cart)
         <div class="container border border-2 shadow shadow-sm mb-5 rounded">
             <div class="d-flex justify-content-end m-3">
@@ -45,7 +47,7 @@
                     <div class="col-sm-1 d-flex flex-wrap align-content-center justify-content-center">
                         <div class="form-group checkBox">
                             <input class="form-check-input" type="checkbox" name="inputBox{{ $idx }}" value="{{ $cart->id }}" id="{{$cart->id}}">
-                        <?php $idx++;?>
+                            <?php $idx++; ?>
                         </div>
                     </div>
                     <div class="col-3">
@@ -62,7 +64,7 @@
 
                                 <button type="submit" class="btn btn-outline-min rounded-right min" id="{{$cart->id}}">-</button>
                                 <div class="maxQty" id="{{$cart->product->stock}}"></div>
-                                <input class="form-control text-center" type="number" min="1" max="{{$cart->product->stock}}" name="quantity" id="quantity" value="{{$cart->qty}}">
+                                <input class="form-control text-center" type="number" min="1" name="quantity" id="quantity" value="{{$cart->qty}}">
                                 <button type="submit" class="btn btn-outline-add rounded-left add" id="{{$cart->id}}">+</button>
                             </div>
 
@@ -145,7 +147,11 @@
                 <button type="button" class="btn btn-bg-apps" data-toggle="modal" data-target="#checkoutModal" aria-label="Close">Checkout</button>
             </div>
         </div>
-        <!-- <button type="submit" class="checkout btn btn-outline-apps">Test</button> -->
+        @if ($errors != null)
+        @foreach ($errors->all() as $error)
+        <h4 class="text-danger">{{$error}}!!</h4>
+        @endforeach
+        @endif
     </form>
 
 </div>
@@ -158,30 +164,34 @@
         <h1>History</h1>
     </div>
     @foreach ($transactions as $tran)
-    <div class="container border border-2 shadow shadow-sm mb-4 rounded p-4">
-        <div class="row">
 
-            <div class="col-5 d-flex flex-wrap align-content-center">
-                <div>
-                    <h4>[{{ $tran->created_at }}]</h4>
-                </div>
-            </div>
-            <?php $totalTrans = 0;
-            foreach ($tran->details as $detail) {
-                $totalTrans += ($detail->product->price * $detail->qty);
-            }
-            ?>
+    <form action="/transaction/detail/{{$tran->id}}" method="get">
+        <div class="container border border-2 shadow shadow-sm mb-4 rounded p-4">
+            <div class="row">
 
-            <div class="col-sm-4 d-flex flex-wrap align-content-center">
-                <div>
-                    <h5>Total Transaction: ${{$totalTrans+($totalTrans*15/100)}}</h5>
+                <div class="col-5 d-flex flex-wrap align-content-center">
+                    <div>
+                        <h4>[{{ $tran->created_at }}]</h4>
+                    </div>
                 </div>
-            </div>
-            <div class="col">
-                <button class="btn btn-outline-apps" type="submit">View Detail Transaction</button>
+                <?php $totalTrans = 0;
+                foreach ($tran->details as $detail) {
+                    $totalTrans += ($detail->product->price * $detail->qty);
+                }
+                ?>
+
+                <div class="col-sm-4 d-flex flex-wrap align-content-center">
+                    <div>
+                        <h5>Total Transaction: ${{$totalTrans+($totalTrans*15/100)}}</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <button class="btn btn-outline-apps" type="submit">View Detail Transaction</button>
+                </div>
             </div>
         </div>
-    </div>
+
+    </form>
     @endforeach
 </div>
 
@@ -260,11 +270,8 @@
                     }
                 }
             });
-            var max = parseInt($(this).siblings('.maxQty').attr('id'));
+            $(this).siblings('#quantity').val(quantity + 1);
 
-            if (quantity < max) {
-                $(this).siblings('#quantity').val(quantity + 1);
-            }
 
 
         });

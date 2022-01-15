@@ -65,27 +65,50 @@ class CartTransactionController extends Controller
         return redirect()->back();
     }
 
+    public function detailTransaction($id){
+        $transaction = Transaction::find($id);
+
+
+        return view('transaction-detail')->with('transactions',$transaction);
+
+    }
+
+
     public function checkout(Request $request)
     {
         $allInput = $request->all();
         $count = count($request->all());
+        print_r($allInput);
+        if ($count >= 3) {
+            $transaction = new Transaction();
+            $transaction->transaction_date = date("Y-m-d");
+            $transaction->user_id = Auth::user()->id;
+            $transaction->save();
+            $carts = Auth::user()->cart;
+            $count = count($carts);
+            // echo ($count);
+            for ($i = 1; $i < $count + 1; $i++) {
+                if (isset($allInput["inputBox" . $i])) {
+                    $cartId = $allInput["inputBox" . $i];
+                    echo("hello".$i);
+                    $cart = Cart::where("id", "=", $cartId)->first();
+                    $detail = new Detail();
 
-        $transaction = new Transaction();
-        $transaction->transaction_date = date("Y-m-d");
-        $transaction->user_id = Auth::user()->id;
-        $transaction->save();
+                    $detail->qty = $cart->qty;
+                    $detail->product_id = $cart->product_id;
+                    $detail->transaction_id = $transaction->id;
+                    $detail->save();
+                    $cart->delete();
 
-        for ($i = 1; $i < $count - 1; $i++) {
-            $cartId = $allInput["inputBox" . $i];
-            $cart = Cart::where("id", "=", $cartId)->first();
-            $detail = new Detail();
+                }
+            }
+            return redirect()->back();
 
-            $detail->qty = $cart->qty;
-            $detail->product_id = $cart->product_id;
-            $detail->transaction_id = $transaction->id;
-            $detail->save();
-            $cart->delete();
+        } else {
+            return redirect()->back()->withErrors("You need choose the item first");
         }
-        return redirect()->back();
     }
+
+
+
 }
