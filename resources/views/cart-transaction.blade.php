@@ -52,7 +52,8 @@
                     </div>
                     <div class="col-3">
                         <div class="border rounded mb-3">
-                            <img class="img-fluid" src="{{$cart->product->picture_path}}" alt="test" srcset="">
+                        <!-- <img class="img-fluid" src="{{ $cart->product->picture_path }}" alt="test" srcset=""> -->
+                            <img class="img-fluid" src="{{ asset('storage/'.$cart->product->picture_path) }}" alt="test" srcset="">
                         </div>
                         <div class="row mb-2">
                             <div class="col text-center d-flex flex-wrap align-content-center justify-content-center">

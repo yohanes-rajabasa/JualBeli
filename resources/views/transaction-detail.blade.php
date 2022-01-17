@@ -3,7 +3,8 @@
 @section('title', 'Transaction Detail')
 
 @section('content')
-<a href="/transaction" style="background-color: transparent; border-color: transparent; text-decoration: underline; color:black;"><h3><strong><< back</strong></h3></a>
+
+<a href="/transaction" class="btn btn-primary">Back</a>
 @if ($transactions)
 
 <div>
@@ -19,7 +20,8 @@
         <div class="row">
             <div class="col-3">
                 <div class="border rounded mb-3">
-                    <img class="img-fluid" src="{{$detail->product->picture_path}}" alt="test" srcset="">
+                    <!-- <img class="img-fluid" src="{{ $detail->product->picture_path }}" alt=""> -->
+                    <img class="img-fluid" src="{{asset('storage/'.$detail->product->picture_path)}}" alt="test" srcset="">
                 </div>
                 <div class="row mb-2">
                     <div class="col text-center d-flex flex-wrap align-content-center justify-content-center">

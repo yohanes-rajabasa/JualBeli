@@ -12,15 +12,29 @@ class ProductController extends Controller
     public function search(Request $request){
         $validation = [
             "search_query"=>'required',
+            "sort_type"=>'in:name,price',
+            "sort_order"=>'in:asc,desc'
         ];
 
         $request->validate($validation);
 
-        $products = Product::where('name','LIKE','%'.$request->search_query.'%')->orderBy('name','asc')->paginate(20)->withQueryString();
+        $message = '';
+
+        if(request('sort_type') && request('sort_order')){
+            $sortBy = $request->sort_type;
+            $sortOrder = $request->sort_order;
+            $message = "Sorted by: ".$request->sort_type.", ".$request->sort_order;
+        } else {
+            $sortBy = 'name';
+            $sortOrder = 'asc';
+        }
+
+        $products = Product::where('name','LIKE','%'.$request->search_query.'%')->orderBy($sortBy,$sortOrder)->paginate(20)->withQueryString();
 
         return view('search')
             ->with('products',$products)
-            ->with("query",$request->search_query);
+            ->with("query",$request->search_query)
+            ->with('message', $message);
         
     }
 
