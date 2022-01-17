@@ -47,7 +47,9 @@ class ProductController extends Controller
         $validateData = $request->validate([
             'name' => ['required', 'min:4', 'max:255'],
             'price' => ['required', 'min:0'],
-            'quantity' => ['required', 'min:0']
+            'quantity' => ['required', 'min:0'],
+            'description' => ['required', 'min:10'],
+            'image' => ['required', 'file', 'image' ],
         ]);
         
         $validateData['picture_path'] = "";
@@ -75,8 +77,8 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'New product has been added!');
     }
     
-    public function deleteProduct (Product $product){
-        
+    public function deleteProduct ($id){
+        $product = Product::find($id);
         Storage::delete('public/'.$product->picture_path);
         Product::destroy($product->id);
         return redirect()->back()->with('success','Post');
@@ -93,10 +95,20 @@ class ProductController extends Controller
         $validateData = $request->validate([
             'name' => ['required', 'min:4', 'max:255'],
             'price' => ['required', 'min:0'],
-            'quantity' => ['required', 'min:0']
+            'quantity' => ['required', 'min:0'],
+            'description' => ['required', 'min:10'],
+            'image' => ['nullable', 'image'],
         ]);
         
         $product = Product::find($id);
+
+        $validateData['desc'] = Str::limit($request->description, 200);
+        
+        $product->name = $validateData['name'];
+        $product->price = $validateData['price'];
+        $product->desc = $validateData['desc'];
+        $product->stock = $validateData['quantity'];
+        
         if($request->hasFile('image')){
             $file = $request->file('image');
             $imageName = time().'_'.$file->getClientOriginalName();
@@ -104,17 +116,8 @@ class ProductController extends Controller
             $imagePath = 'product/'.$imageName;
             Storage::delete('public/'.$product->picture_path);
             $validateData['picture_path'] = $imagePath;
+            $product->picture_path = $validateData['picture_path'];
         }
-        
-        $validateData['user_id'] = auth()->user()->id;
-        $validateData['desc'] = Str::limit($request->description, 200);
-        
-        $product->name = $validateData['name'];
-        $product->price = $validateData['price'];
-        $product->desc = $validateData['desc'];
-        $product->stock = $validateData['quantity'];
-        $product->picture_path = $validateData['picture_path'];
-        $product->user_id = $validateData['user_id'];
         
         $product->save();
     
