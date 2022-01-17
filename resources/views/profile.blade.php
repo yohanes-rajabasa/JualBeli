@@ -60,7 +60,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label class="pt-4" style="color: #A90011; font-size: 20px">DoB</label>
+                <label class="pt-4" style="color: #A90011; font-size: 20px">Date of Birth</label>
                 <input type="date" name="dob" class="form-control mt-2 @error('dob') is-invalid @enderror"  placeholder="Date of Birth" style="border-color: #A90011" required value="{{ old('dob') !== null ? old('dob') : $userData->dob}}">
                 @error('dob')
                     <div class="invalid-feedback">
