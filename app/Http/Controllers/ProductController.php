@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Product;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -79,9 +81,11 @@ class ProductController extends Controller
     
     public function deleteProduct ($id){
         $product = Product::find($id);
-        $image_path = $product->picture_path;
-        Product::destroy($product->id);
-        Storage::delete('public/'.$image_path);
+        // $product->deleted_at = new DateTime();
+        // $image_path = $product->picture_path;
+        Cart::where('product_id','=',$product->id)->delete();
+        $product->delete();
+        // Storage::delete('public/'.$image_path);
         return redirect()->back()->with('success','Post');
     }
     

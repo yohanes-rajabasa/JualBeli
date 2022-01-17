@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->integer('stock');
             $table->string('picture_path')->nullable();
             $table->unsignedBigInteger('user_id');
+            $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
