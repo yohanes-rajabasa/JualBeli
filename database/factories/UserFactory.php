@@ -19,7 +19,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'dob' => $this->faker->date(),
             'address' => $this->faker->sentence(10),
-            'picture_path' => $this->faker->imageUrl(360, 360, 'user', true),
+            'picture_path' => $this->getUserImg(),
             'role_number' => $this->faker->numberBetween(1,2),
             'email' => $this->faker->freeEmail(),
             'password' =>"12345678",
@@ -38,5 +38,10 @@ class UserFactory extends Factory
                 'email_verified_at' => null,
             ];
         });
+    }
+
+    public function getUserImg(){
+        $tempImg = $this->faker->image('public/storage/profiles',360,360,null,false);
+        return 'profiles/'.$tempImg;
     }
 }

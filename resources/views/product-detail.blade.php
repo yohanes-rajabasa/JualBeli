@@ -7,7 +7,7 @@
 @section('content')
     <div class="row g-0">
         <div class="col-md-4">
-            <img src="{{ $productData->picture_path }}" class="img-fluid" alt="product-picture">
+            <img src="{{ asset('storage/'.$productData->picture_path) }}" class="img-fluid" alt="product-picture">
         </div>
         <div class="col-md-8">
             <div class="card-body">
@@ -54,7 +54,7 @@
         @foreach ($discussionData as $item)
             <div class="card text-dark bg-light mb-3" id="3">
                 <a class="card-header" href="" style="text-decoration: none; color:black;">
-                    <img src="{{ $item->picture }}" alt="profile-pictures" height="30" width="30" style="border-radius: 50%;"> {{ $item->name }} [{{ $item->created_at }}]</a>
+                    <img src="{{ asset('storage/'.$item->picture) }}" alt="profile-pictures" height="30" width="30" style="border-radius: 50%;"> {{ $item->name }} [{{ $item->created_at }}]</a>
                 <div class="card-body">
                     <p class="card-text">{{ $item->msg }}</p>
                     @auth

@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(10)->create();
         \App\Models\Product::factory(20)->create();
-        \App\Models\Cart::factory(15)->create();
-        \App\Models\Transaction::factory(15)->create();
-        $this->call([
-            DetailSeeder::class,
-        ]);
+        // \App\Models\Cart::factory(15)->create();
+        // \App\Models\Transaction::factory(15)->create();
+        // $this->call([
+        //     DetailSeeder::class,
+        // ]);
     }
 }

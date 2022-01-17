@@ -20,7 +20,7 @@ class ProductFactory extends Factory
             'price' => $this->faker->numberBetween(100000,500000),
             'desc' => $this->faker->sentence(8),
             'stock' => $this->faker->numberBetween(10,20),
-            'picture_path' => $this->faker->imageUrl(360, 360, 'products', true),
+            'picture_path' => $this->getProductImg(),
             'user_id' => $this->getUserId(),
         ];
     }
@@ -34,5 +34,10 @@ class ProductFactory extends Factory
         }
         $randomUserId = $this->faker->randomElement($arrayUserId);
         return $randomUserId;
+    }
+
+    public function getProductImg(){
+        $tempImg = $this->faker->image('public/storage/product',360,360,null,false);
+        return 'product/'.$tempImg;
     }
 }
