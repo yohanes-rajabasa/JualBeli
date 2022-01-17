@@ -79,8 +79,9 @@ class ProductController extends Controller
     
     public function deleteProduct ($id){
         $product = Product::find($id);
-        Storage::delete('public/'.$product->picture_path);
+        $image_path = $product->picture_path;
         Product::destroy($product->id);
+        Storage::delete('public/'.$image_path);
         return redirect()->back()->with('success','Post');
     }
     
