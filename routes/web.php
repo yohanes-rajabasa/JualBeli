@@ -62,7 +62,7 @@ Route::post('/auth/login/seller', [LoginController::class, 'performLogin']);
 Route::get('/logout', [LoginController::class, 'performLogout']);
 
 Route::middleware(['auth', 'seller'])->group(function () {
-    Route::get('/seller/',[SellerController::class, 'sellerPageView']);
+    Route::get('/seller',[SellerController::class, 'sellerPageView']);
     Route::get('/seller/insert-product',[ProductController::class, 'insertProductView']);
     Route::post('/seller/insert-product',[ProductController::class, 'insertProduct']);
     Route::get('/seller/update-product/{id}',[ProductController::class,'updateProductView'])->name('showUpdateProduct');
