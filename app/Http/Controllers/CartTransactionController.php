@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Detail;
+use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Contracts\Session\Session as SessionSession;
 use Illuminate\Http\Request;
@@ -13,6 +14,42 @@ use Illuminate\Support\Facades\Session;
 class CartTransactionController extends Controller
 {
     //
+    public function insertProductToCart(Request $request){
+        Cart::insert([
+            'user_id' => Auth::user()->id,
+            'product_id' => $request->product_id,
+            'qty' => $request->qty,
+        ]);
+
+        return redirect('/transaction');
+    }
+
+    public function createTransaction(Request $request){
+        // create new transaction
+        Transaction::create([
+            'transaction_date' => date('Y-m-d'),
+            'user_id' => Auth::user()->id,
+        ]);
+
+        // create detail transaction
+        $transactionData = Transaction::orderBy('created_at','DESC')->first();
+        Detail::create([
+            'qty' => $request->qty,
+            'product_id' => $request->product_id,
+            'transaction_id' => $transactionData->id,
+        ]);
+
+        //reduce product stock
+        $productData = Product::find($request->product_id);
+        $tempStock = $productData->stock - $request->qty;
+        if($tempStock < 0) $tempStock = 0; 
+        $productData->stock = $tempStock;
+        $productData->save();
+
+        // redirect to view transaction page
+        return redirect('/transaction');
+    }
+
     public function index()
     {
         $carts = Auth::user()->cart;

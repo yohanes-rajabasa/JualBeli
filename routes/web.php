@@ -41,6 +41,8 @@ Route::middleware(EnsureLogin::class)->group(function () {
     Route::delete('/transaction/cart/delete/{id}', [CartTransactionController::class, 'deleteCart']);
 });
 Route::post('/transaction', [CartTransactionController::class, 'calcPrice']);
+Route::post('/transaction/cart/add', [CartTransactionController::class, 'insertProductToCart']);
+Route::post('/transaction/create', [CartTransactionController::class, 'createTransaction']);
 Route::post('/transaction/cart/minQuantity', [CartTransactionController::class, 'minQuantity']);
 Route::post('/transaction/cart/addQuantity', [CartTransactionController::class, 'addQuantity']);
 Route::post('/transaction/cart/checkout', [CartTransactionController::class, 'checkout']);
