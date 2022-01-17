@@ -17,7 +17,7 @@
 <body style="background-color: #FFFAEF">
     @include('shared-layout.header')
 
-    <div class="container p-5">
+    <div class="container p-lg-5">
         @yield('content')
     </div>
     @include('shared-layout.footer')

@@ -16,7 +16,7 @@ class ProductController extends Controller
 
         $request->validate($validation);
 
-        $products = Product::where('name','LIKE','%'.$request->search_query.'%')->orderBy('name','asc')->paginate(20);
+        $products = Product::where('name','LIKE','%'.$request->search_query.'%')->orderBy('name','asc')->paginate(20)->withQueryString();
 
         return view('search')
             ->with('products',$products)

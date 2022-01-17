@@ -33,7 +33,7 @@
             <h1 style="padding-left: 30px; padding-top:40px; font-weight:bold;">ABOUT US</h1>
             <div style="width: 320px; text-align:justify; padding-left:30px;">
                 <p>
-                    Sebuah web application yang berperan sebagai perantara antara penjual
+                    JualBeli adalah sebuah web application yang berperan sebagai perantara antara penjual
                     dan pembeli dalam melakukan proses jual beli produk. Produk yang
                     diperjual belikan dalam website berupa pakaian.
                 </p>

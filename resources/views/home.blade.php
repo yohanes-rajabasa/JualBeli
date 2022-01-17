@@ -41,113 +41,50 @@
     </div>
 
     <div>
-        <h2>Barang Populer!</h2>
-        {{-- testing --}}
+        <h2 class="mb-3">Popular Items!</h2>
 
         <div class=" row row-cols-md-4 row-cols-2 mb-3">
             @forelse ($products['popular'] as $product)
-                <div class="col mb-4">
+                <div class="col mb-lg-4 mb-2 p-2 p-lg-3">
                     <div class="p-2 border border-secondary rounded-3 bg-white">
-                        <div class="text-center">
-                            <img class="img-fluid"
-                                style="width: 200px; height: 200px; border: 2px solid; border-radius: 10px; border-color: #A90011;"
-                                src={{ asset('storage/' . $product->picture_path) }}>
+                        <div class="image-box-display">
+                            <div><img class="img-fluid text-center" src={{ asset('storage/' . $product->picture_path) }}></div>
                         </div>
                         <div class="text-center p-2">
                             <p class="fw-bold mb-1">{{ $product->name }}</p>
                             <p>Rp. {{ $product->price }}</p>
                             <a href="{{ url('product/' . $product->id . '/detail') }}"
-                                class="btn btn-dark rounded-pill">View
-                                Product</a>
+                                class="btn btn-dark rounded-pill">View Product</a>
                         </div>
                     </div>
                 </div>
             @empty
-                @for ($i = 0; $i < 8; $i++)
-                    <div class="col mb-4">
-                        <div class="p-2 border border-secondary rounded-3 bg-white">
-                            <img class="img-fluid" src={{ url('/storage/product/product1.jpg') }}>
-                            <div class="text-center p-2">
-                                <p class="fw-bold mb-1">Baju Chicago</p>
-                                <p>Rp. XXXXX</p>
-                                <a href="" class="btn btn-dark rounded-pill">View Product</a>
-                            </div>
-                        </div>
-                    </div>
-                @endfor
-                {{-- <p class="text-center fw-bold">Sorry, the item you're looking for is not found :(</p> --}}
+                <div class="container-fluid text-center">
+                    <p class="fw-bold">The Items Are Not Available.</p>
+                </div>
             @endforelse
         </div>
 
-        <h2>Perluas Seleramu!</h2>
+        <h2 class="mb-3">Broaden Your Style!</h2>
         <div class=" row row-cols-md-4 row-cols-2 mb-3">
             @forelse ($products['random'] as $product)
-                <div class="col mb-4">
+                <div class="col mb-lg-4 mb-2 p-2 p-lg-3">
                     <div class="p-2 border border-secondary rounded-3 bg-white">
-                        <div class="text-center">
-                            <img class="img-fluid"
-                                style="width: 200px; height: 200px; border: 2px solid; border-radius: 10px; border-color: #A90011;"
-                                src={{ asset('storage/' . $product->picture_path) }}>
+                        <div class="image-box-display">
+                            <div><img class="img-fluid text-center" src={{ asset('storage/' . $product->picture_path) }}></div>
                         </div>
                         <div class="text-center p-2">
                             <p class="fw-bold mb-1">{{ $product->name }}</p>
                             <p>Rp. {{ $product->price }}</p>
                             <a href="{{ url('product/' . $product->id . '/detail') }}"
-                                class="btn btn-dark rounded-pill">View
-                                Product</a>
+                                class="btn btn-dark rounded-pill">View Product</a>
                         </div>
                     </div>
                 </div>
             @empty
-                @for ($i = 0; $i < 8; $i++)
-                    <div class="col mb-4">
-                        <div class="p-2 border border-secondary rounded-3 bg-white">
-                            <img class="img-fluid" src={{ url('/storage/product/product1.jpg') }}>
-                            <div class="text-center p-2">
-                                <p class="fw-bold mb-1">Baju Chicago</p>
-                                <p>Rp. XXXXX</p>
-                                <a href="" class="btn btn-dark rounded-pill">View Product</a>
-                            </div>
-                        </div>
-                    </div>
-                @endfor
-                {{-- <p class="text-center fw-bold">Sorry, the item you're looking for is not found :(</p> --}}
-            @endforelse
-        </div>
-
-        <h2>Barang Bekas Kualitas Baru!</h2>
-        <div class=" row row-cols-md-4 row-cols-2 mb-3">
-            @forelse ($products['secondhand'] as $product)
-                <div class="col mb-4">
-                    <div class="p-2 border border-secondary rounded-3 bg-white">
-                        <div class="text-center">
-                            <img class="img-fluid"
-                                style="width: 200px; height: 200px; border: 2px solid; border-radius: 10px; border-color: #A90011;"
-                                src={{ asset('storage/' . $product->picture_path) }}>
-                        </div>
-                        <div class="text-center p-2">
-                            <p class="fw-bold mb-1">{{ $product->name }}</p>
-                            <p>Rp. {{ $product->price }}</p>
-                            <a href="{{ url('product/' . $product->id . '/detail') }}"
-                                class="btn btn-dark rounded-pill">View
-                                Product</a>
-                        </div>
-                    </div>
+                <div class="container-fluid text-center">
+                    <p class="fw-bold">The Items Are Not Available.</p>
                 </div>
-            @empty
-                @for ($i = 0; $i < 8; $i++)
-                    <div class="col mb-4">
-                        <div class="p-2 border border-secondary rounded-3 bg-white">
-                            <img class="img-fluid" src={{ url('/storage/product/product1.jpg') }}>
-                            <div class="text-center p-2">
-                                <p class="fw-bold mb-1">Baju Chicago</p>
-                                <p>Rp. XXXXX</p>
-                                <a href="" class="btn btn-dark rounded-pill">View Product</a>
-                            </div>
-                        </div>
-                    </div>
-                @endfor
-                {{-- <p class="text-center fw-bold">Sorry, the item you're looking for is not found :(</p> --}}
             @endforelse
         </div>
     </div>

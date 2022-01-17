@@ -49,3 +49,44 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
     /* color: #A90011; */
     border-radius: 0px 10px 10px 0px;
 }
+
+.image-box-display{
+    background-color: white; 
+    height: 200px; 
+    display: flex; 
+    flex-wrap: wrap; 
+    align-items: center; 
+    justify-self: center;
+    border: 2px solid; 
+    border-radius: 10px; 
+    border-color: #A90011;
+}
+
+/*override bootstrap pagination theme*/
+.pagination > li > a
+{
+    background-color: white;
+    color: #A90011;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #5a5a5a;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: #A90011 !important;
+    border: solid 1px #A90011 !important;
+}
+
+.page-item.active .page-link {
+    color: #fff !important;
+    background: #A90011 !important;
+}
