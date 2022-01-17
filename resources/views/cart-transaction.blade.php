@@ -94,7 +94,7 @@
                                 </div>
                                 <?php $total += $cart->product->price * $cart->qty; ?>
                                 <div>
-                                    <h5 class="m-0">$<label
+                                    <h5 class="m-0">Rp. <label
                                             for="">{{ $cart->product->price }}<small>/item</small></label></h5>
                                 </div>
                             </div>
@@ -131,7 +131,7 @@
                         <h5>Total Price</h5>
                     </div>
                     <div>
-                        <h6>$ <strong class="m-0 total">0</strong></h6>
+                        <h6>Rp. <strong class="m-0 total">0</strong></h6>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between">
@@ -139,7 +139,7 @@
                         <h5>Pajak PPN</h5>
                     </div>
                     <div>
-                        <h6>$ <strong class="ppn">0</strong></h6>
+                        <h6>Rp. <strong class="ppn">0</strong></h6>
                     </div>
                 </div>
             </div>
