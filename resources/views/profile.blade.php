@@ -21,12 +21,11 @@
     <div class="row">
         <div class="col-4 text-center">
             <div class="profile mt-5">
-                {{-- @if($user == null) --}}
-                    <img class="avatar rounded-circle img-thumbnail border-3" src="{{ asset('storage/profiles/1640526532_Bmx 18-bmx-avalon-ban-3-0-sepeda-anak--18-inch-_full06.jpg') }}" width="250px" height="250px">
-                    {{-- <img class="avatar rounded-circle img-thumbnail border-3" src="{{ asset('storage/profile-logo.png') }}" width="250px" height="250px"> --}}
-                {{-- @else
-                    <img class="avatar rounded-circle img-thumbnail border-3" src="{{ Storage:url($user->picture_path) }}" width="250px" height="250px">
-                @endif --}}
+                @if ($userData->picture_path == null)
+                    <img class="avatar rounded-circle img-thumbnail border-3" src="/storage/profile-logo.png" width="250px" height="250px">
+                @else
+                    <img class="avatar rounded-circle" style="border: 3px solid #A90011; padding:5px;" src="{{ Storage::url($userData->picture_path) }}" width="250px" height="250px"> 
+                @endif
                 <div class="mt-4">
                     <input class="file-upload form-control form-control-sm mx-5" name="picture_path" style="border-color: #A90011" type="file">
                 </div>
