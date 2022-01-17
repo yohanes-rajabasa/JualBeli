@@ -11,8 +11,10 @@ class HomeController extends Controller
     //
     public function index(){
         // redirect if seller
-        if(Auth::user()->role_number == 2){
-            return redirect('/seller');
+        if(Auth::check()){
+            if(Auth::user()->role_number == 2){
+                return redirect('/seller');
+            }
         }
 
         //temp
