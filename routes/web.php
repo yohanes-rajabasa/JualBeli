@@ -45,11 +45,6 @@ Route::post('/transaction/cart/minQuantity', [CartTransactionController::class, 
 Route::post('/transaction/cart/addQuantity', [CartTransactionController::class, 'addQuantity']);
 Route::post('/transaction/cart/checkout', [CartTransactionController::class, 'checkout']);
 
-
-Route::get('/profile', function () {
-    return view('profile');
-});
-
 // product detail
 Route::get('product/{id}/detail', [ProductDetailController::class, 'showProductDetail']);
 

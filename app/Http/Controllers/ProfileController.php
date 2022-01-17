@@ -12,7 +12,7 @@ class ProfileController extends Controller
 {
     public function create()
     {
-        $userData = User::find(11);
+        $userData = Auth::user();
         return view('profile', ['userData' => $userData]);
     }
 
@@ -26,7 +26,7 @@ class ProfileController extends Controller
             'picture_path' => ['image', 'mimes:jpeg,png,jpg,svg', 'max:2048'],
         ]);
 
-        $userData = User::find(11);
+        $userData = Auth::user();
         
         $userData->name = $validateData['name'];
         $userData->email = $validateData['email'];
@@ -35,13 +35,13 @@ class ProfileController extends Controller
         $userData->address = $validateData['address'];
 
         if ($request->hasFile('picture_path')) {
+            Storage::delete('public/'.$userData->picture_path);
+            
             $file = $request->file('picture_path'); 
 
             $imageName = time().'_'.$file->getClientOriginalName();
             Storage::putFileAs('public/profiles/', $file, $imageName);
             $imagePath = 'profiles/' . $imageName;
-            
-            Storage::delete('public/'.$userData->picture_path);
 
             $userData->picture_path = $imagePath;
         }
