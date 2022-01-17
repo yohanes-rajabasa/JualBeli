@@ -25,7 +25,6 @@
         <hr class="dropdown-divider">
 
         {{-- discussion box --}}
-        {{-- <p class="h4" style="margin-top: 10px;">Discussion <button class="btn btn-danger">+ Create new threads</button></p> --}}
         <p class="h4" style="margin-top: 10px;">
             Discussion
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -59,6 +58,17 @@
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
             </div>
         </div>
+
+        {{-- @foreach ($discussionData as $item)
+            <div class="card text-dark bg-light mb-3" id="3">
+                <a class="card-header" href="#1" style="text-decoration: none; color:black;">
+                    <img src="https://static.vecteezy.com/system/resources/previews/000/108/576/non_2x/free-blue-abstract-vector-background.jpg" alt="profile-pictures" height="30" width="30" style="border-radius: 50%;"> Header</a>
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+                </div>
+            </div>
+        @endforeach --}}
     </div>
 
     {{-- modal --}}
@@ -111,5 +121,7 @@
             modalBodyInput.value = ''
         })
     </script>
+
+    {{-- ajax script --}}
 
 @endsection

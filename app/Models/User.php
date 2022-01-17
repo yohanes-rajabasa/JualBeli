@@ -52,6 +52,9 @@ class User extends Authenticatable
     public function transaction(){
         return $this->hasMany(Transaction::class);
     }
+    public function discussion(){
+        return $this->hasMany(Discussion::class);
+    }
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = bcrypt($password);
