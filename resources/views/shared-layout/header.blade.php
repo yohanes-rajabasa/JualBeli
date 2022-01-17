@@ -47,7 +47,7 @@
                         <a class="nav-link" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/register">About Us</a>
+                        <a class="nav-link" aria-current="page" href="/aboutus">About Us</a>
                     </li>
                     if(@auth
                         @if (Auth::user()->role_number === 2)

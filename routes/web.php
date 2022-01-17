@@ -69,3 +69,5 @@ Route::middleware(['auth', 'seller'])->group(function () {
     Route::put('/seller/update-product',[ProductController::class,'updateProduct'])->name('performUpdateProduct');
     Route::delete('/deleteProduct/{id}',[ProductController::class, 'deleteProduct']);
 });
+
+Route::get('/aboutus', [HomeController::class, 'aboutus']);
