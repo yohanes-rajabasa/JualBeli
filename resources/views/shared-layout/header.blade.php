@@ -58,8 +58,6 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="/seller">Manage Product</a></li>
-                                    <li><a class="dropdown-item" href="#">2</a></li>
-                                    <li><a class="dropdown-item" href="#">3</a></li>
                                     <li><a class="dropdown-item" href="/profile">My Profile</a></li>
                                 </ul>
                             </li>
@@ -71,8 +69,6 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="/transaction">Cart & Transaction</a></li>
-                                    <li><a class="dropdown-item" href="#">2</a></li>
-                                    <li><a class="dropdown-item" href="#">3</a></li>
                                     <li><a class="dropdown-item" href="/profile">My Profile</a></li>
                                 </ul>
                             </li>
