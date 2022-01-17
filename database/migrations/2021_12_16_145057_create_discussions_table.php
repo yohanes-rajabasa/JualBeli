@@ -18,7 +18,7 @@ class CreateDiscussionsTable extends Migration
             $table->date('date');
             $table->string('msg');
             $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('parent_id')->default(0);
+            $table->unsignedBigInteger('parent_id');
             $table->unsignedBigInteger('user_id');
 
             $table->foreign('product_id')->references('id')->on('products');

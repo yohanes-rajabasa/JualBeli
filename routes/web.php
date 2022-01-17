@@ -71,3 +71,11 @@ Route::middleware(['auth', 'seller'])->group(function () {
 });
 
 Route::get('/aboutus', [HomeController::class, 'aboutus']);
+
+//discussion
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('discussion')->group(function () {
+        Route::post('add', [ProductDetailController::class,'createNewThreads'])->name('createThread');
+        Route::post('reply', [ProductDetailController::class,'replyThreads'])->name('replyThread');
+    });
+});
