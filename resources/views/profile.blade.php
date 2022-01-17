@@ -27,7 +27,7 @@
                     <img class="avatar rounded-circle" style="border: 3px solid #A90011; padding:5px;" src="{{ Storage::url($userData->picture_path) }}" width="250px" height="250px"> 
                 @endif
                 <div class="mt-4">
-                    <input class="file-upload form-control form-control-sm mx-5" name="picture_path" style="border-color: #A90011" type="file">
+                    <input class="file-upload form-control form-control-sm mx-3" name="picture_path" style="border-color: #A90011" type="file">
                 </div>
             </div>
         </div>
@@ -45,15 +45,6 @@
                 <label class="pt-4" style="color: #A90011; font-size: 20px">Email</label>
                 <input type="email" class="form-control mt-2 @error('email') is-invalid @enderror" name="email" placeholder="Enter email" style="border-color: #A90011" required value="{{ old('email') !== null ? old('email') : $userData->email}}">
                 @error('email')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-            <div class="form-group">
-                <label class="pt-4" style="color: #A90011; font-size: 20px">Password</label>
-                <input type="password" class="form-control mt-2 @error('password') is-invalid @enderror" name="password" placeholder="Password" style="border-color: #A90011" required>
-                @error('password')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>

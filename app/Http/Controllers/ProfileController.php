@@ -20,7 +20,6 @@ class ProfileController extends Controller
         $validateData = $request->validate([
             'name' => ['required', 'min:4', 'max:255'],
             'email' => ['required', 'email:dns', 'max:255'],
-            'password' => ['required', 'min:6'],
             'dob' => ['required'],
             'address' => ['required', 'string', 'max:255'],
             'picture_path' => ['image', 'mimes:jpeg,png,jpg,svg', 'max:2048'],
@@ -30,7 +29,6 @@ class ProfileController extends Controller
         
         $userData->name = $validateData['name'];
         $userData->email = $validateData['email'];
-        $userData->password = $validateData['password'] = Hash::make($validateData['password']);
         $userData->dob = $validateData['dob'];
         $userData->address = $validateData['address'];
 
