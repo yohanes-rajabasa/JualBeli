@@ -14,4 +14,6 @@ class Detail extends Model
     public function product(){
         return $this->belongsTo(Product::class);
     }
+
+    protected $guarded = ['id'];
 }

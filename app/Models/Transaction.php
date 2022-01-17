@@ -14,4 +14,6 @@ class Transaction extends Model
     public function details(){
         return $this->hasMany(Detail::class);
     }
+
+    protected $guarded = ['id'];
 }

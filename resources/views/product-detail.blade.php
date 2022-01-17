@@ -14,9 +14,26 @@
             <h5 class="card-title">{{ $productData->name }}</h5>
             <hr class="dropdown-divider">
             <p class="h6">Rp. {{ $productData->price }}</p>
-            <p class="h6">Available Stock: {{ $productData->price }}</p>
-            <a class="btn btn-danger" href="">Add to cart</a>
-            <a class="btn btn-danger" href="">Buy now</a>
+            <p class="h6">Available Stock: {{ $productData->stock }}</p>
+
+            @auth
+                @if (Auth::user()->role_number == 1)
+                    {{-- add to cart --}}
+                    <form action="/transaction/cart/add" method="post">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $productData->id }}">
+                        <label for="qty">Qty</label>
+                        <input type="number" name="qty" id="qty" class="w-25 h-25 d-inline-block form-control" min="1" placeholder="ex. 1,2,3,..." required max="{{ $productData->stock }}"><br><br>
+                        <button type="submit" class="btn btn-danger">Add to Cart</button>
+                        <button type="submit" class="btn btn-danger" formaction="/transaction/create">Buy now</button>
+                    </form>
+                @endif
+            @endauth
+
+            @guest
+                <p>You must login to add this product to cart or buy product</p>
+            @endguest
+            
             </div>
         </div>
         <p class="h4" style="margin-top: 10px;">Description</p>
