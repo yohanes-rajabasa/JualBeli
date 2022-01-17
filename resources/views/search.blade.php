@@ -7,6 +7,9 @@
         <div class="mb-1">
             <h2 class="fw-bold">Search result for: <span class="fw-normal">{{$query}}</span></h2>
             <p>Showing {{$products->count()}} item(s) for <span class="fw-bold">"{{$query}}"</span></p>
+            @if ($message != '')
+                <p class="fw-bold">{{$message}}</p>
+            @endif
             <hr style="border-bottom: 2px solid black; opacity: 1;">
     
             <form action="{{url('/search')}}" method="get">
@@ -36,11 +39,9 @@
         <div class="row row-cols-md-4 row-cols-2 mb-3 mt-2">
             @forelse ($products as $product)
                 <div class="col mb-lg-4 mb-2 p-2 p-lg-3">
-                    <div class="p-2 border border-secondary rounded-3 bg-white">
-                        <div class="image-box-display">
-                            <div><img class="img-fluid text-center" src={{ asset('storage/' . $product->picture_path) }}></div>
-                        </div>
-                        <div class="text-center p-2">
+                    <div class="p-2 border border-secondary rounded-3 bg-white text-center">
+                        <img class="img-fluid image-box-display" src={{asset('storage/' . $product->picture_path) }}>
+                        <div class="p-2">
                             <p class="fw-bold mb-1">{{ $product->name }}</p>
                             <p>Rp. {{ $product->price }}</p>
                             <a href="{{ url('product/' . $product->id . '/detail') }}"
