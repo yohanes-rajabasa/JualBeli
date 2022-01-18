@@ -9,8 +9,8 @@
     .form-change-password{
         border: 5px solid#222020;
         background-color: #A90011;
-        width: 60%;
-        height: 310px;
+        width: 70%;
+        height: 350px;
         margin: auto;
         text-align: center;
         border-radius: 20px;
@@ -21,6 +21,7 @@
         color: #f9f6ef;
         padding-top: 20px;
         margin: 0;
+        margin-bottom: 10px;
     }
     .current-password-label{
         margin-right: 60px;
@@ -29,32 +30,32 @@
         margin-right: 80px;
     }
     .new-confirm-password-label{
-        margin-right: 25px;
+        margin-right: 20px;
     }
     .form-input{
         color: #f9f6ef;
-        font-size: 14px;
+        font-size: 16px;
     }
     .text-input{
         margin-top: 25px;
         border-radius: 5px;
         border: none;
-        height: 25px;
-        width: 200px;
+        height: 30px;
+        width: 300px;
         padding-left: 5px;
     }
     .change-password-button{
-        height: 30px;
-        width: 140px;
+        height: 35px;
+        width: 160px;
         border-radius: 10px;
         text-align: center;
         background-color:  #f9f6ef;
-        margin-top: 20px;
+        margin-top: 40px;
         margin-left: auto;
         margin-right: auto;
         text-decoration: none;
         border: none;
-        font-size: 12px;
+        font-size: 14px;
         color: #A90011;
     }
     .change-password-button:hover{
@@ -83,24 +84,12 @@
             <div class="form-input">
                 <label for="current-password" class="current-password-label">Current Password</label>
                 <input id="current-password" name="current-password" type="password" class="text-input" required>
-                @if ($errors->has('current-password'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('current-password') }}</strong>
-                </span>
-                @endif
             </div>
         </div>
         <div class="form-group {{ $errors->has('new-password') ? ' has-error' : '' }}">
             <div class="form-input">
                 <label for="new-password" class="new-password-label">New Password</label>
                 <input id="new-password" name="new-password" type="password" class="text-input" required>
-                <div>
-                    @if ($errors->has('new-password'))
-                        <span class="help-block">
-                            <strong style="font-size: 10px; color:white; margin-left:200px">{{ $errors->first('new-password') }}</strong>
-                        </span>
-                    @endif
-                </div>
             </div>
         </div>
         <div class="form-group {{ $errors->has('new-password-confirm') ? ' has-error' : '' }}">
