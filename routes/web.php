@@ -71,6 +71,10 @@ Route::middleware(['auth', 'seller'])->group(function () {
 });
 
 Route::get('/aboutus', [HomeController::class, 'aboutus']);
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/changepassword',[ProfileController::class, 'showChangePassword']);
+    Route::post('/changepassword',[ProfileController::class, 'changePassword']);
+});
 
 //discussion
 Route::middleware(['auth'])->group(function () {

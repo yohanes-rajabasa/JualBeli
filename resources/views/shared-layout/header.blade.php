@@ -59,6 +59,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="/seller">Manage Product</a></li>
                                     <li><a class="dropdown-item" href="/profile">My Profile</a></li>
+                                    <li><a class="dropdown-item" href="/changepassword">Change Password</a></li>
                                 </ul>
                             </li>
                         @else
@@ -70,6 +71,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="/transaction">Cart & Transaction</a></li>
                                     <li><a class="dropdown-item" href="/profile">My Profile</a></li>
+                                    <li><a class="dropdown-item" href="/changepassword">Change Password</a></li>
                                 </ul>
                             </li>
                         @endif

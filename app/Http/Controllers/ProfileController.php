@@ -47,4 +47,33 @@ class ProfileController extends Controller
         $userData->save();
         return redirect('/profile')->with('success', 'Successfully Updated Your Profile');
     }
+
+    public function showChangePassword(){
+        return view('change-password');
+    }
+
+    public function changePassword(Request $request){
+        if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
+            return redirect()->back()->with("error","Your current password does not matches with the password.");
+        }
+        
+        if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
+            return redirect()->back()->with("error","New Password cannot be same as your current password.");
+        }
+
+        if(strcmp($request->get('new-password'), $request->get('new-password-confirm')) != 0){
+            return redirect()->back()->with("error","New Password and New Password Confirm must same.");
+        }
+
+        $validator = $request->validate([
+            'current-password' => 'required',
+            'new-password' => 'required|min:6',
+        ]);
+
+        $user = Auth::user();
+        $user->password = $request->get('new-password');
+        $user->save();
+
+        return redirect()->back()->with("success","Password successfully changed!");
+    }
 }
