@@ -43,7 +43,7 @@
                         </div>
                         <div class="col d-flex flex-wrap align-content-end justify-content-center">
                             <div class="title">
-                                <h4>Item Price: Rp. {{ $detail->product->price * $detail->qty }}</h4>
+                                <h4>Item Price: @currency($detail->product->price * $detail->qty)</h4>
                             </div>
                             <?php $total += $detail->product->price * $detail->qty; ?>
                         </div>
@@ -58,7 +58,7 @@
                 <h5>Total Price</h5>
             </div>
             <div>
-                <h6>Rp. <strong class="m-0 total">{{ $total }}</strong></h6>
+                <h6><strong class="m-0 total">@currency($total) </strong></h6>
             </div>
         </div>
         <div class="d-flex justify-content-between">
@@ -66,7 +66,7 @@
                 <h5>Pajak PPN</h5>
             </div>
             <div>
-                <h6>Rp. <strong class="ppn">{{ ($total * 15) / 100 }}</strong></h6>
+                <h6><strong class="ppn">@currency(($total * 15) / 100) </strong></h6>
             </div>
         </div>
     </div>
@@ -77,7 +77,7 @@
                 <h3>Grand Price</h3>
             </div>
             <div>
-                <h5>Rp. <strong class="grandPrice">{{ $total + ($total * 15) / 100 }}</strong></h5>
+                <h5><strong class="grandPrice">@currency($total + ($total * 15) / 100)</strong></h5>
             </div>
         </div>
     </div>

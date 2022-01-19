@@ -76,7 +76,7 @@ class ProductController extends Controller
         
         $product->save();
         
-        return redirect()->back()->with('success', 'New product has been added!');
+        return redirect('/seller')->with('success', 'New product has been added!');
     }
     
     public function deleteProduct ($id){
@@ -126,6 +126,6 @@ class ProductController extends Controller
         
         $product->save();
     
-        return redirect()->back()->with('success', 'New product has been updated!');
+        return redirect('/seller')->with('success', $product->name .' has been updated!');
     }
 }

@@ -60,13 +60,13 @@
             <div class="row">
                 <p class="col-sm-6 col-md-3 mt-4 pe-5" style="font-size: 20px"> Insert Product Image</p>
                 <div class="mt-4 col-sm-6 col-md-6">
-                    <input class="file-upload form-control form-control-sm @error('image') is-invalid @enderror" style="border-color: #A90011" type="file"
-                        name="image" id="image">
+                    <input class="file-upload form-control form-control-sm @error('image') is-invalid @enderror"
+                        style="border-color: #A90011" type="file" name="image" id="image">
                     @error('image')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
-                    @enderror    
+                    @enderror
                 </div>
             </div>
             <div class="mt-5 mb-5">

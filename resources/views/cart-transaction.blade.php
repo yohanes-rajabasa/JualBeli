@@ -94,8 +94,8 @@
                                 </div>
                                 <?php $total += $cart->product->price * $cart->qty; ?>
                                 <div>
-                                    <h5 class="m-0">Rp. <label
-                                            for="">{{ $cart->product->price }}<small>/item</small></label></h5>
+                                    <h5 class="m-0"><label
+                                            for="">@currency($cart->product->price)<small>/item</small></label></h5>
                                 </div>
                             </div>
                         </div>
@@ -150,7 +150,7 @@
                         <h3>Grand Price</h3>
                     </div>
                     <div>
-                        <h5>$ <strong class="grandPrice">0</strong></h5>
+                        <h5>Rp. <strong class="grandPrice">0</strong></h5>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
@@ -194,7 +194,8 @@
 
                         <div class="col-sm-4 d-flex flex-wrap align-content-center">
                             <div>
-                                <h5>Total Transaction: ${{ $totalTrans + ($totalTrans * 15) / 100 }}</h5>
+                                <h5>Total Transaction: @currency($totalTrans + ($totalTrans * 15) / 100)
+                                </h5>
                             </div>
                         </div>
                         <div class="col">

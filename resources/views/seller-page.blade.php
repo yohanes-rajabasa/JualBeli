@@ -6,6 +6,9 @@
 @section('content')
 
     <div class="row align-items-center">
+        @if (session()->has('success'))
+            <h4 class="text-success">{{ session('success') }}</h4>
+        @endif
         <p class="fs-1 pt-0 col align-self-start"> Listed Product</p>
         <div class="col">
             <a class="btn btn-danger float-end" href="/seller/insert-product">Add New Product</a>
@@ -25,8 +28,8 @@
                                 class="card-img-top img-fluid" alt="...">
                         </div>
                         <div class="card-body row">
-                            <p class="card-title fs-3 text-center pb-0">{{ $p->name }}</p>
-                            <p class="fs-5 card-text text-center pt-0">Rp. {{ $p->price }}</p>
+                            <p class="card-title fs-3 text-center pb-0 text-truncate">{{ $p->name }}</p>
+                            <p class="fs-5 card-text text-center pt-0 text-truncate">@currency($p->price)</p>
 
                             <div class="d-grid gap-2">
                                 <a class="btn btn-dark m-auto" href="{{ route('showUpdateProduct', $p->id) }}"> edit

@@ -47,10 +47,10 @@
             @forelse ($products['popular'] as $product)
                 <div class="col mb-lg-4 mb-2 p-2 p-lg-3">
                     <div class="p-2 border border-secondary rounded-3 bg-white text-center">
-                        <img class="img-fluid image-box-display" src={{asset('storage/' . $product->picture_path) }}>
+                        <img class="img-fluid image-box-display" src={{ asset('storage/' . $product->picture_path) }}>
                         <div class="p-2">
                             <p class="fw-bold mb-1">{{ $product->name }}</p>
-                            <p>Rp. {{ $product->price }}</p>
+                            <p> @currency($product->price)</p>
                             <a href="{{ url('product/' . $product->id . '/detail') }}"
                                 class="btn btn-dark rounded-pill">View Product</a>
                         </div>
@@ -68,10 +68,10 @@
             @forelse ($products['random'] as $product)
                 <div class="col mb-lg-4 mb-2 p-2 p-lg-3">
                     <div class="p-2 border border-secondary rounded-3 bg-white text-center">
-                        <img class="img-fluid image-box-display" src={{asset('storage/' . $product->picture_path) }}>
+                        <img class="img-fluid image-box-display" src={{ asset('storage/' . $product->picture_path) }}>
                         <div class="p-2">
                             <p class="fw-bold mb-1">{{ $product->name }}</p>
-                            <p>Rp. {{ $product->price }}</p>
+                            <p>@currency($product->price) </p>
                             <a href="{{ url('product/' . $product->id . '/detail') }}"
                                 class="btn btn-dark rounded-pill">View Product</a>
                         </div>
