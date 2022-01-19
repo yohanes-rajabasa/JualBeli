@@ -58,21 +58,18 @@ class CartTransactionController extends Controller
     }
     public function calcPrice(Request $request)
     {
-        // echo($request->value);
-        // echo($request->total);
-        $total = (int) $request->total;
-        $testTotal = 0;
+        $testTotal = $request->total;
         $isChecked = $request->value === "true";
         if (!$isChecked) {
             $cart = Cart::find($request->id);
-            $total -= ($cart->product->price * $cart->qty);
-        } else {
+            $testTotal -= ($cart->product->price * $cart->qty);
+        }else{
             $cart = Cart::find($request->id);
-            $total += ($cart->product->price * $cart->qty);
             $testTotal += ($cart->product->price * $cart->qty);
         }
-
-        echo $testTotal;
+        $ppn = $testTotal * 15/100;
+        $grandPrice = $testTotal + $ppn;
+        echo (number_format($testTotal,2,',','.')."#".number_format($ppn,2,',','.')."#".number_format($grandPrice,2,',','.'));
     }
     public function minQuantity(Request $request)
     {
