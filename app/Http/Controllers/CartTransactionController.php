@@ -42,7 +42,7 @@ class CartTransactionController extends Controller
         //reduce product stock
         $productData = Product::find($request->product_id);
         $tempStock = $productData->stock - $request->qty;
-        if($tempStock < 0) $tempStock = 0; 
+        if($tempStock < 0) $tempStock = 0;
         $productData->stock = $tempStock;
         $productData->save();
 
@@ -61,6 +61,7 @@ class CartTransactionController extends Controller
         // echo($request->value);
         // echo($request->total);
         $total = (int) $request->total;
+        $testTotal = 0;
         $isChecked = $request->value === "true";
         if (!$isChecked) {
             $cart = Cart::find($request->id);
@@ -68,8 +69,10 @@ class CartTransactionController extends Controller
         } else {
             $cart = Cart::find($request->id);
             $total += ($cart->product->price * $cart->qty);
+            $testTotal += ($cart->product->price * $cart->qty);
         }
-        echo ($total);
+
+        echo $testTotal;
     }
     public function minQuantity(Request $request)
     {

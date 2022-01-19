@@ -321,7 +321,7 @@
                     $('.total').text(data);
                     var temp = parseInt(data);
                     var grandPrice = temp + (temp * 15 / 100);
-                    $('.ppn').text(temp * 15 / 100);
+                    $('.ppn').text((temp * 15/100));
                     $('.grandPrice').text(grandPrice);
                 });
             });
