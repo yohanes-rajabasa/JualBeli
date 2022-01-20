@@ -165,6 +165,7 @@ class CartTransactionController extends Controller
                     $detail->qty = $cart->qty;
                     $detail->product_id = $cart->product_id;
                     $detail->transaction_id = $transaction->id;
+                    $cart->product->stock-=$cart->qty;
                     $detail->save();
                     $cart->delete();
                 }
