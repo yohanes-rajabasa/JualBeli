@@ -50,7 +50,7 @@
                         <a class="nav-link" aria-current="page" href="/aboutus">About Us</a>
                     </li>
                     @auth
-                        @if (Auth::user()->role_number === 2)
+                        @if (Auth::user()->role_number == 2)
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
