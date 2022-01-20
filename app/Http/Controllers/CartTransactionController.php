@@ -16,12 +16,26 @@ class CartTransactionController extends Controller
     //
     public function insertProductToCart(Request $request)
     {
-        Cart::insert([
-            'user_id' => Auth::user()->id,
-            'product_id' => $request->product_id,
-            'qty' => $request->qty,
-        ]);
+        $cartData = Cart::where([['product_id','=',$request->product_id],['user_id','=',Auth::user()->id]])->first();
+        if($cartData == null){
+            Cart::insert([
+                'user_id' => Auth::user()->id,
+                'product_id' => $request->product_id,
+                'qty' => $request->qty,
+            ]);
+        }
+        else{
+            $temp = ($request->qty) + ($cartData->qty);
+            $productData = Product::find((int)$request->product_id);
+            
+            if($temp > $productData->stock){
+                $temp = $productData->stock;
+            }
 
+            $cartData->qty = $temp;
+            $cartData->save();
+        }
+        
         return redirect('/transaction');
     }
 
@@ -165,6 +179,12 @@ class CartTransactionController extends Controller
                     $detail->qty = $cart->qty;
                     $detail->product_id = $cart->product_id;
                     $detail->transaction_id = $transaction->id;
+                    
+                    $detail->product_name = $cart->product->name;
+                    $detail->product_price = $cart->product->price;
+                    $detail->product_desc = $cart->product->desc;
+                    $detail->product_img = $cart->product->picture_path;
+                    
                     $product = $cart->product;
                     $product->stock-= $cart->qty;
                     $product->save();
