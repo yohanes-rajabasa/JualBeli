@@ -34,11 +34,16 @@ class CartTransactionController extends Controller
         ]);
 
         // create detail transaction
-        $transactionData = Transaction::orderBy('created_at', 'DESC')->first();
+        $transactionData = Transaction::orderBy('created_at','DESC')->first();
+        $productData = Product::where('id','=',$request->product_id)->first();
         Detail::create([
-            'qty' => $request->qty,
             'product_id' => $request->product_id,
             'transaction_id' => $transactionData->id,
+            'product_name' => $productData->name,
+            'product_price' => $productData->price,
+            'product_desc' => $productData->desc,
+            'product_img' => $productData->picture_path,
+            'qty' => $request->qty,
         ]);
 
         //reduce product stock
