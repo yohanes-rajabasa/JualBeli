@@ -15,12 +15,17 @@ class CreateDetailsTable extends Migration
     {
         Schema::create('details', function (Blueprint $table) {
             $table->id();
-            $table->integer('qty');
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('transaction_id');
-
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('transaction_id')->references('id')->on('transactions');
+            
+            // fix
+            $table->string('product_name')->nullable();
+            $table->string('product_price')->nullable();
+            $table->string('product_desc')->nullable();
+            $table->string('product_img')->nullable();
+            $table->integer('qty');
             $table->timestamps();
         });
     }
