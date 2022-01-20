@@ -22,7 +22,7 @@
 
 <div class="containerlogin">
 
-    <p class="h3 text-center title-login">Login Customer</p>
+    <p class="h3 text-center title-login">Login</p>
     <form action="/auth/login/customer" method="post">
         @csrf
         <label for="basic-url" class="form-label">Email</label>
@@ -46,7 +46,6 @@
             <button type="submit" class="btn btn-outline-apps">Login</button>
         </div>
     </form><br>
-    <p class="text-center"><a href="/auth/login/seller" class="text-decoration-none title-login">Login as Seller</a></p>
 
     @if ($errors->any())
         <div class="alert alert-danger">

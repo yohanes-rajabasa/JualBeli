@@ -9,12 +9,8 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     //
-    public function showLoginCustomer(){
-        return view('login-customer');
-    }
-
-    public function showLoginSeller(){
-        return view('login-seller');
+    public function showLoginUser(){
+        return view('login');
     }
 
     public function performLogin(Request $request){

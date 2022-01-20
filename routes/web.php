@@ -51,12 +51,8 @@ Route::post('/transaction/cart/checkout', [CartTransactionController::class, 'ch
 Route::get('product/{id}/detail', [ProductDetailController::class, 'showProductDetail']);
 
 // login customer
-Route::get('/auth/login/customer', [LoginController::class, 'showLoginCustomer'])->name('login');
-Route::post('/auth/login/customer', [LoginController::class, 'performLogin']);
-
-// login seller
-Route::get('/auth/login/seller', [LoginController::class, 'showLoginSeller']);
-Route::post('/auth/login/seller', [LoginController::class, 'performLogin']);
+Route::get('/auth/login/', [LoginController::class, 'showLoginUser'])->name('login');
+Route::post('/auth/login/', [LoginController::class, 'performLogin']);
 
 // logout
 Route::get('/logout', [LoginController::class, 'performLogout']);
