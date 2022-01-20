@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Session;
 class CartTransactionController extends Controller
 {
     //
-    public function insertProductToCart(Request $request){
+    public function insertProductToCart(Request $request)
+    {
         Cart::insert([
             'user_id' => Auth::user()->id,
             'product_id' => $request->product_id,
@@ -24,7 +25,8 @@ class CartTransactionController extends Controller
         return redirect('/transaction');
     }
 
-    public function createTransaction(Request $request){
+    public function createTransaction(Request $request)
+    {
         // create new transaction
         Transaction::create([
             'transaction_date' => date('Y-m-d'),
@@ -32,7 +34,7 @@ class CartTransactionController extends Controller
         ]);
 
         // create detail transaction
-        $transactionData = Transaction::orderBy('created_at','DESC')->first();
+        $transactionData = Transaction::orderBy('created_at', 'DESC')->first();
         Detail::create([
             'qty' => $request->qty,
             'product_id' => $request->product_id,
@@ -42,7 +44,7 @@ class CartTransactionController extends Controller
         //reduce product stock
         $productData = Product::find($request->product_id);
         $tempStock = $productData->stock - $request->qty;
-        if($tempStock < 0) $tempStock = 0;
+        if ($tempStock < 0) $tempStock = 0;
         $productData->stock = $tempStock;
         $productData->save();
 
@@ -63,36 +65,62 @@ class CartTransactionController extends Controller
         if (!$isChecked) {
             $cart = Cart::find($request->id);
             $testTotal -= ($cart->product->price * $cart->qty);
-        }else{
+        } else {
             $cart = Cart::find($request->id);
             $testTotal += ($cart->product->price * $cart->qty);
         }
-        $ppn = $testTotal * 15/100;
+        $ppn = $testTotal * 15 / 100;
         $grandPrice = $testTotal + $ppn;
-        echo (number_format($testTotal,2,',','.')."#".number_format($ppn,2,',','.')."#".number_format($grandPrice,2,',','.'));
+        echo (number_format($testTotal, 2, ',', '.') . "#" . number_format($ppn, 2, ',', '.') . "#" . number_format($grandPrice, 2, ',', '.'));
     }
     public function minQuantity(Request $request)
     {
+        $total = (int)$request->total;
         $id = (int) $request->id;
         $quantity = (int) $request->qty;
+        $cart = Cart::find($id);
+
         if ($quantity != 1) {
             $cart = Cart::find($id);
+            $oldTotal = $cart->qty * $cart->product->price;
+            $total -= $oldTotal;
+
             $cart->qty = $quantity - 1;
+
+            $newTotal = $cart->qty * $cart->product->price;
+            $total += $newTotal;
+
             $cart->save();
         }
-        echo ($id);
+
+        $ppn = $total * 15 / 100;
+        $grandPrice = $total + $ppn;
+
+        echo ($id . "#" . number_format($total, 2, ',', '.') . "#" . number_format($ppn, 2, ',', '.') . "#" . number_format($grandPrice, 2, ',', '.'));
     }
 
     public function addQuantity(Request $request)
     {
+        $total = $request->total;
         $id = (int) $request->id;
         $quantity = (int) $request->qty;
         $cart = Cart::find($id);
+
         if ($quantity < $cart->product->stock) {
+            $oldTotal = $cart->qty * $cart->product->price;
+            $total -= $oldTotal;
+
             $cart->qty = $quantity + 1;
+
+            $newTotal = $cart->qty * $cart->product->price;
+            $total += $newTotal;
+
             $cart->save();
         }
-        echo ($id);
+
+        $ppn = $total * 15 / 100;
+        $grandPrice = $total + $ppn;
+        echo ($id . "#" . number_format($total, 2, ',', '.') . "#" . number_format($ppn, 2, ',', '.') . "#" . number_format($grandPrice, 2, ',', '.'));
     }
 
     public function deleteCart($id)
@@ -102,12 +130,10 @@ class CartTransactionController extends Controller
         return redirect()->back();
     }
 
-    public function detailTransaction($id){
+    public function detailTransaction($id)
+    {
         $transaction = Transaction::find($id);
-
-
-        return view('transaction-detail')->with('transactions',$transaction);
-
+        return view('transaction-detail')->with('transactions', $transaction);
     }
 
 
@@ -127,7 +153,7 @@ class CartTransactionController extends Controller
             for ($i = 1; $i < $count + 1; $i++) {
                 if (isset($allInput["inputBox" . $i])) {
                     $cartId = $allInput["inputBox" . $i];
-                    echo("hello".$i);
+                    echo ("hello" . $i);
                     $cart = Cart::where("id", "=", $cartId)->first();
                     $detail = new Detail();
 
@@ -136,16 +162,11 @@ class CartTransactionController extends Controller
                     $detail->transaction_id = $transaction->id;
                     $detail->save();
                     $cart->delete();
-
                 }
             }
             return redirect()->back();
-
         } else {
             return redirect()->back()->withErrors("You need choose the item first");
         }
     }
-
-
-
 }
