@@ -119,7 +119,7 @@ class ProductController extends Controller
             $imageName = time().'_'.$file->getClientOriginalName();
             Storage::putFileAs('public/product',$file,$imageName);
             $imagePath = 'product/'.$imageName;
-            Storage::delete('public/'.$product->picture_path);
+            // Storage::delete('public/'.$product->picture_path);
             $validateData['picture_path'] = $imagePath;
             $product->picture_path = $validateData['picture_path'];
         }

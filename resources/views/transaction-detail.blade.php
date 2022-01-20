@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-3">
                             <div class="border rounded mb-3">
-                                <img class="img-fluid" src="{{ asset('storage/' . $detail->product->picture_path) }}"
+                                <img class="img-fluid" src="{{ asset('storage/' . $detail->product_img) }}"
                                     alt="test" srcset="">
                             </div>
                             <div class="row mb-2">
@@ -34,18 +34,18 @@
 
                         <div class="col-6">
                             <div class="title">
-                                <h3>{{ $detail->product->name }}</h3>
+                                <h3>{{ $detail->product_name }}</h3>
                             </div>
                             <div>
-                                <p>{{ $detail->product->desc }}</p>
+                                <p>{{ $detail->product_desc }}</p>
                             </div>
 
                         </div>
                         <div class="col d-flex flex-wrap align-content-end justify-content-center">
                             <div class="title">
-                                <h4>Item Price: @currency($detail->product->price * $detail->qty)</h4>
+                                <h4>Item Price: @currency($detail->product_price * $detail->qty)</h4>
                             </div>
-                            <?php $total += $detail->product->price * $detail->qty; ?>
+                            <?php $total += $detail->product_price * $detail->qty; ?>
                         </div>
                     </div>
                 </div>
